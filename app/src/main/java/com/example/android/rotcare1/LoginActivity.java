@@ -1,15 +1,22 @@
 package com.example.android.rotcare1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
@@ -48,11 +55,49 @@ public class LoginActivity extends AppCompatActivity {
 
                 String Mail = mail.getText().toString().trim();
                 String Password = password.getText().toString().trim();
-                String Usertype = user_type.getSelectedItem().toString();
+                final String Usertype = user_type.getSelectedItem().toString();
+
+
+                if(TextUtils.isEmpty(Mail)){
+                    mail.setError("Email is required");
+                    return;
+                }
+                if(TextUtils.isEmpty(Password)){
+                    password.setError("Password is required");
+                    return;
+                }
+                if(password.length() <6) {
+                    password.setError("Password must be >= 6 characters");
+                    return;
+                }
+
+
+                fAuth.signInWithEmailAndPassword(Mail,Password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()){
+                            if (Usertype.equals("Member")){
+                                startActivity(new Intent(getApplicationContext(),M_HomeActivity.class));
+                            }
+                            else if (Usertype.equals("Volunteer")){
+                                startActivity(new Intent(getApplicationContext(),V_HomeActivity.class));
+                            }
+                        }
+                        else{
+                            Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 
-
+        Create_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+            }
+        });
 
     }
 }
