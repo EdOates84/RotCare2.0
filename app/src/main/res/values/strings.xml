@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RotCare1</string>
+    <string-array name="Occupation">
+        <item>Student</item>
+        <item>Self employed</item>
+        <item>Government Servant</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="User_type">
+        <item>Member</item>
+        <item>Volunteer</item>
+    </string-array>
+</resources>

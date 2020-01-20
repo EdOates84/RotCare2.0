@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "823439534608",
+    "firebase_url": "https://rotcare1-4c2dc.firebaseio.com",
+    "project_id": "rotcare1-4c2dc",
+    "storage_bucket": "rotcare1-4c2dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823439534608:android:50f5a70bbe4cc8367e3895",
+        "android_client_info": {
+          "package_name": "com.example.android.rotcare1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823439534608-o9qp105ju37r2ia6c1r942eiqlakr166.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0wGxtC1aQC06oJQ3w6Dv085qk9AfNCBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823439534608-o9qp105ju37r2ia6c1r942eiqlakr166.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
