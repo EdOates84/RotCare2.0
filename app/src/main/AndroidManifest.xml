@@ -11,8 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".V_HomeActivity"></activity>
-        <activity android:name=".M_HomeActivity" />
+        <activity android:name=".V_HomeActivity"
+            android:label="Volunteer"></activity>
+        <activity android:name=".M_HomeActivity"
+            android:label="Member"/>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -21,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
 
         <meta-data
             android:name="preloaded_fonts"
