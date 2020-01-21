@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MultiDex.install(this);
         setContentView(R.layout.activity_login);
 
         mail = findViewById(R.id.loginmail);
