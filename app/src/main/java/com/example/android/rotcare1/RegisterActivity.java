@@ -3,12 +3,18 @@ package com.example.android.rotcare1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,14 +24,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText name,mail,password,address,date,phone,emergency;
-    private Spinner occupation , gender;
+    private TextView date;
+    private EditText name,mail,password,address,phone,emergency;
+    private Spinner occupation , gender , User_type;
     private Button registerbtn;
     private FirebaseAuth fAuth;
     private DatabaseReference mDatabase;
+    private DatePickerDialog.OnDateSetListener dateset;
+    String Date_of_Birth;
 
 
     @Override
@@ -41,9 +53,46 @@ public class RegisterActivity extends AppCompatActivity {
         date = findViewById(R.id.rdate);
         occupation = findViewById(R.id.Occupation_spinner);
         gender = findViewById(R.id.gender_spinner);
+        User_type = findViewById(R.id.usertype_spin);
         registerbtn = findViewById(R.id.rregister);
         fAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        RegisterActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        dateset,year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });
+
+
+        dateset = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                month = month + 1;
+                Date_of_Birth = month + "/" + dayOfMonth + "/" + year;
+                date.setText(Date_of_Birth);
+
+
+            }
+        };
+
+        ArrayAdapter<CharSequence> user_adapter = ArrayAdapter.createFromResource(this,R.array.User_type,android.R.layout.simple_spinner_item);
+        user_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        User_type.setAdapter(user_adapter);
 
         ArrayAdapter<CharSequence> gender_adapter = ArrayAdapter.createFromResource(this,R.array.Gender,android.R.layout.simple_spinner_item);
         gender_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -60,9 +109,10 @@ public class RegisterActivity extends AppCompatActivity {
                 final String Mail = mail.getText().toString().trim();
                 String Password = password.getText().toString().trim();
                 final String Address = address.getText().toString().trim();
-                final String Phone = phone.getText().toString().trim();
+                String Phone = phone.getText().toString().matches(MobilePattern)
                 final String Emergency = emergency.getText().toString().trim();
-                final String Date = date.getText().toString().trim();
+                final String DATE = Date_of_Birth;
+                final String USER = User_type.getSelectedItem().toString();
                 final String Gender = gender.getSelectedItem().toString();
                 final String Occupation = occupation.getSelectedItem().toString();
 
@@ -78,9 +128,11 @@ public class RegisterActivity extends AppCompatActivity {
                                     Address,
                                     Phone,
                                     Emergency,
-                                    Date,
+                                    DATE,
                                     Gender,
-                                    Occupation
+                                    Occupation,
+                                    USER
+
 
                             );
                             FirebaseDatabase.getInstance().getReference().child("Users")
@@ -92,21 +144,16 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
 
                                         Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                     }
                                 }
                             });
-
-//
-//
                         }
                         else {
                             Toast.makeText(RegisterActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
-
-
             }
         });
 
@@ -114,25 +161,3 @@ public class RegisterActivity extends AppCompatActivity {
 }
 
 
-//    Map<String, Object> user = new HashMap<>();
-//                user.put("Name",Name);
-//                        user.put("EMail",Mail);
-//                        user.put("Phone",Phone);
-//                        user.put("Emergency No.",Emergency);
-//                        user.put("Date",Date);
-//                        user.put("Gender",Gender);
-//                        user.put("Occupation",Occupation);
-//
-//                        fFirestore.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//@Override
-//public void onSuccess(DocumentReference documentReference) {
-//        Toast.makeText(RegisterActivity.this, "DocumentSnapshot added with ID: "+ documentReference.getId(), Toast.LENGTH_SHORT).show();
-//
-//        }
-//        }).addOnFailureListener(new OnFailureListener() {
-//@Override
-//public void onFailure(@NonNull Exception e) {
-//
-//        Toast.makeText(RegisterActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-//        }
-//        });

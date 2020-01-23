@@ -80,17 +80,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <EditText
-                android:id="@+id/rdate"
-                android:layout_width="298dp"
-                android:layout_height="60dp"
-                android:ems="10"
-                android:hint="Date of Birth"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gender_spinner"
-                app:layout_constraintVertical_bias="0.0" />
+<!--            <EditText-->
+<!--                android:id="@+id/rdate"-->
+<!--                android:layout_width="298dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Date of Birth"-->
+<!--                android:inputType="date"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />-->
 
             <EditText
                 android:id="@+id/rphone"
@@ -200,6 +198,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/remergency"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/rdate"
+                android:layout_width="298dp"
+                android:layout_height="60dp"
+                android:padding="10dp"
+                android:text="Date Of Birth"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

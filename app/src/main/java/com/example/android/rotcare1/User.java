@@ -9,7 +9,7 @@ public class User {
 
     }
 
-    public User(String name, String email, String gender, String occupation, String address, String date, String phone, String emergency) {
+    public User(String name, String email, String gender, String occupation, String address, String date, String phone, String emergency, String USER) {
         this.name = name;
         this.email = email;
         this.gender = gender;
