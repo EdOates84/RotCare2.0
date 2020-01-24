@@ -3,6 +3,7 @@ package com.example.android.rotcare1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,7 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     Spinner user_type;
     Button loginbtn;
     TextView Create_user,forgot_pass;
+    String Usertype;
     private FirebaseAuth fAuth;
+    private FirebaseAuth.AuthStateListener fAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,23 @@ public class LoginActivity extends AppCompatActivity {
         loginbtn = findViewById(R.id.sign_btn);
         Create_user = findViewById(R.id.create_user);
         forgot_pass = findViewById(R.id.forgotpass);
+        final ProgressDialog dialog = new ProgressDialog(this);
+
+//        fAuthListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                if (firebaseAuth.getCurrentUser() != null){
+//
+//                    if (Usertype.equals("Member")){
+//                        startActivity(new Intent(getApplicationContext(),M_HomeActivity.class));
+//                    }
+//                    else if (Usertype.equals("Volunteer")){
+//                        startActivity(new Intent(getApplicationContext(),V_HomeActivity.class));
+//                    }
+////                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//                }
+//            }
+//        };
         fAuth = FirebaseAuth.getInstance();
 
 
@@ -56,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String Mail = mail.getText().toString().trim();
                 String Password = password.getText().toString().trim();
-                final String Usertype = user_type.getSelectedItem().toString();
+                Usertype = user_type.getSelectedItem().toString();
 
 
                 if(TextUtils.isEmpty(Mail)){
@@ -71,7 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError("Password must be >= 6 characters");
                     return;
                 }
-
+                dialog.setMessage("Signing you in...");
+                dialog.show();
 
                 fAuth.signInWithEmailAndPassword(Mail,Password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -87,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else{
                             Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
                         }
                     }
                 });
@@ -99,5 +121,20 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
             }
         });
+    }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        fAuth.addAuthStateListener(fAuthListener);
+//    }
+
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
+        finish();
     }
 }

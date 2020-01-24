@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private TextView date;
     private EditText name,mail,password,address,phone,emergency;
-    private Spinner occupation , gender , User_type;
+    private Spinner occupation , gender , user_type;
     private Button registerbtn;
     private FirebaseAuth fAuth;
     private DatabaseReference mDatabase;
@@ -53,9 +55,12 @@ public class RegisterActivity extends AppCompatActivity {
         date = findViewById(R.id.rdate);
         occupation = findViewById(R.id.Occupation_spinner);
         gender = findViewById(R.id.gender_spinner);
-        User_type = findViewById(R.id.usertype_spin);
+        user_type = findViewById(R.id.user_typespinner);
         registerbtn = findViewById(R.id.rregister);
         fAuth = FirebaseAuth.getInstance();
+
+        final ProgressDialog dialog = new ProgressDialog(this);
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
@@ -90,9 +95,9 @@ public class RegisterActivity extends AppCompatActivity {
             }
         };
 
-        ArrayAdapter<CharSequence> user_adapter = ArrayAdapter.createFromResource(this,R.array.User_type,android.R.layout.simple_spinner_item);
-        user_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        User_type.setAdapter(user_adapter);
+        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this,R.array.User_type,android.R.layout.simple_spinner_item);
+        usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        user_type.setAdapter(usertype_adapter);
 
         ArrayAdapter<CharSequence> gender_adapter = ArrayAdapter.createFromResource(this,R.array.Gender,android.R.layout.simple_spinner_item);
         gender_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -109,55 +114,119 @@ public class RegisterActivity extends AppCompatActivity {
                 final String Mail = mail.getText().toString().trim();
                 String Password = password.getText().toString().trim();
                 final String Address = address.getText().toString().trim();
-                String Phone = phone.getText().toString().matches(MobilePattern)
+                final String Phone = phone.getText().toString().trim();
                 final String Emergency = emergency.getText().toString().trim();
                 final String DATE = Date_of_Birth;
-                final String USER = User_type.getSelectedItem().toString();
+                final String USER = user_type.getSelectedItem().toString();
                 final String Gender = gender.getSelectedItem().toString();
                 final String Occupation = occupation.getSelectedItem().toString();
 
+                if (TextUtils.isEmpty(Name)) {
+                    Toast.makeText(getApplicationContext(), "Enter name!", Toast.LENGTH_SHORT).show();
+                    name.requestFocus();
+                    return;
+                }
 
-                fAuth.createUserWithEmailAndPassword(Mail,Password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                if (TextUtils.isEmpty(Gender)) {
+                    Toast.makeText(getApplicationContext(), "Select gender!", Toast.LENGTH_SHORT).show();
+                    gender.requestFocus();
+                    return;
+                }
 
-                        if (task.isSuccessful()){
-                            User user = new User(
-                                    Name,
-                                    Mail,
-                                    Address,
-                                    Phone,
-                                    Emergency,
-                                    DATE,
-                                    Gender,
-                                    Occupation,
-                                    USER
+                if (TextUtils.isEmpty(Phone)) {
+                    Toast.makeText(getApplicationContext(), "Enter contact no.!", Toast.LENGTH_SHORT).show();
+                    phone.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(Emergency)) {
+                    Toast.makeText(getApplicationContext(), "Enter emergency contact no.!", Toast.LENGTH_SHORT).show();
+                    emergency.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(USER)) {
+                    Toast.makeText(getApplicationContext(), "Select User type!", Toast.LENGTH_SHORT).show();
+                    user_type.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(Mail)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    mail.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(Password)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    password.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(Occupation)) {
+                    Toast.makeText(getApplicationContext(), "Select Occupation!", Toast.LENGTH_SHORT).show();
+                    occupation.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(Address)) {
+                    Toast.makeText(getApplicationContext(), "Enter address!", Toast.LENGTH_SHORT).show();
+                    address.requestFocus();
+                    return;
+                }
+
+//                if (TextUtils.isEmpty(DATE)) {
+//                    Toast.makeText(getApplicationContext(), "Enter Username!", Toast.LENGTH_SHORT).show();
+//                    Date_of_Birth.requestFocus();
+//                    return;
+//                }
 
 
-                            );
-                            FirebaseDatabase.getInstance().getReference().child("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                if (Phone.length()==10 || Emergency.length()==10) {
+                    dialog.setMessage("Registering you in...");
+                    dialog.show();
+                    fAuth.createUserWithEmailAndPassword(Mail, Password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                    if (task.isSuccessful()) {
+                            if (task.isSuccessful()) {
+                                User user = new User(
+                                        Name,
+                                        Mail,
+                                        Address,
+                                        Phone,
+                                        Emergency,
+                                        DATE,
+                                        Gender,
+                                        Occupation,
+                                        USER
+                                );
+                                FirebaseDatabase.getInstance().getReference().child("Users")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .setValue(user).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
 
-                                        Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                        if (task.isSuccessful()) {
+
+                                            Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            } else {
+                                Toast.makeText(RegisterActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
                         }
-                        else {
-                            Toast.makeText(RegisterActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
+                else {
+                    Toast.makeText(RegisterActivity.this, "Please enter valid phone no. ", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
     }
+
+//    private boolean isValidMobile(String phone) {
+//        return android.util.Patterns.PHONE.matcher(phone).matches();
+//    }
 }
 
 

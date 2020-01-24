@@ -1,7 +1,7 @@
 package com.example.android.rotcare1;
 
 public class User {
-    String name,email,gender,occupation,address,Date,phone,emergency;
+    String name, email, gender, occupation, address, Date, phone, emergency, user;
 //    Float phone,emergency;
 //    Long Date,phone,emergency;
 
@@ -9,15 +9,17 @@ public class User {
 
     }
 
-    public User(String name, String email, String gender, String occupation, String address, String date, String phone, String emergency, String USER) {
+    public User(String name, String mail, String address, String phone, String emergency, String DATE, String gender, String occupation, String USER) {
+
         this.name = name;
-        this.email = email;
+        this.email = mail;
         this.gender = gender;
         this.occupation = occupation;
         this.address = address;
-        Date = date;
+        Date = DATE;
         this.phone = phone;
         this.emergency = emergency;
+        this.user = USER;
     }
 
     public String getName() {
@@ -83,4 +85,14 @@ public class User {
     public void setEmergency(String emergency) {
         this.emergency = emergency;
     }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 }
+
+
