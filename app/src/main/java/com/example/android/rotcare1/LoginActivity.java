@@ -91,32 +91,37 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError("Password must be >= 6 characters");
                     return;
                 }
-                dialog.setMessage("Signing you in...");
-                dialog.show();
+//                dialog.setMessage("Signing you in...");
+//                dialog.show();
+                if (Usertype.equals("User Type")) {
+                    Toast.makeText(LoginActivity.this, "Select User", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    dialog.setMessage("Signing you in...");
+                    dialog.show();
 
-                fAuth.signInWithEmailAndPassword(Mail,Password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    fAuth.signInWithEmailAndPassword(Mail, Password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()){
-                            if (Usertype.equals("User Type")){
-                                Toast.makeText(LoginActivity.this, "Select User", Toast.LENGTH_SHORT).show();
-                            }
-                            else if (Usertype.equals("Member")){
-                                startActivity(new Intent(getApplicationContext(),M_HomeActivity.class));
-                            }
-                            else if (Usertype.equals("Volunteer")){
-                                startActivity(new Intent(getApplicationContext(),V_HomeActivity.class));
+                            if (task.isSuccessful()) {
+
+                                if (Usertype.equals("Member")) {
+                                    startActivity(new Intent(getApplicationContext(), M_HomeActivity.class));
+                                } else if (Usertype.equals("Volunteer")) {
+                                    startActivity(new Intent(getApplicationContext(), V_HomeActivity.class));
+                                }
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
                             }
                         }
-                        else{
-                            Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                            dialog.dismiss();
-                        }
-                    }
-                });
+
+                    });
+                }
             }
         });
+
 
         Create_user.setOnClickListener(new View.OnClickListener() {
             @Override
