@@ -5,17 +5,20 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="data_passing">abcd</string>
     <string-array name="Occupation">
+        <item>Occupation</item>
         <item>Student</item>
         <item>Self employed</item>
         <item>Government Servant</item>
         <item>Others</item>
     </string-array>
     <string-array name="Gender">
+        <item>Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Others</item>
     </string-array>
     <string-array name="User_type">
+        <item>User Type</item>
         <item>Member</item>
         <item>Volunteer</item>
         <item>Both</item>

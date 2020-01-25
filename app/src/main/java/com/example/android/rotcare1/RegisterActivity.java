@@ -154,7 +154,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(Password)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Enter Password!", Toast.LENGTH_SHORT).show();
                     password.requestFocus();
                     return;
                 }

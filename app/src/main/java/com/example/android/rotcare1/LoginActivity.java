@@ -99,7 +99,10 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()){
-                            if (Usertype.equals("Member")){
+                            if (Usertype.equals("User Type")){
+                                Toast.makeText(LoginActivity.this, "Select User", Toast.LENGTH_SHORT).show();
+                            }
+                            else if (Usertype.equals("Member")){
                                 startActivity(new Intent(getApplicationContext(),M_HomeActivity.class));
                             }
                             else if (Usertype.equals("Volunteer")){
