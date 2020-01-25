@@ -11,17 +11,17 @@
         <item
             android:id="@+id/nav_profile"
             android:title="My Profile"
-            android:icon="@drawable/token"/>
+            android:icon="@drawable/edit_profile"/>
         <item
             android:id="@+id/nav_reward"
             android:icon="@drawable/edit_profile"
             android:title="My Reward" />
         <item
-            android:id="@+id/nav_reward"
+            android:id="@+id/nav_message"
             android:icon="@drawable/edit_profile"
             android:title="Message to President/ Feedback" />
         <item
-            android:id="@+id/nav_reward"
+            android:id="@+id/nav_contacts"
             android:icon="@drawable/edit_profile"
             android:title="Contacts" />
         <item

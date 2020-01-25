@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Nav_ContactsActivity"></activity>
+        <activity android:name=".Nav_MessageActivity" />
+        <activity android:name=".Nav_RewardActivity" />
+        <activity android:name=".Nav_ProfileActivity" />
+        <activity android:name=".Nav_HomeActivity" />
         <activity
             android:name=".V_HomeActivity"
             android:label="Volunteer" />
