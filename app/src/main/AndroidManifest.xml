@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Nav_ContactsActivity"></activity>
+        <activity android:name=".MemberActivity"></activity>
+        <activity android:name=".VolunteerActivity" />
+        <activity android:name=".Nav_ContactsActivity" />
         <activity android:name=".Nav_MessageActivity" />
         <activity android:name=".Nav_RewardActivity" />
         <activity android:name=".Nav_ProfileActivity" />

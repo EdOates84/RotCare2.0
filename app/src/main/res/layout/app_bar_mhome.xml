@@ -21,7 +21,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/activity_volunteer" />
+    <include layout="@layout/activity_member" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
