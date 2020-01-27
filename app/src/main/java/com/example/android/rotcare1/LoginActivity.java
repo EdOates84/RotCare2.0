@@ -60,31 +60,31 @@ public class LoginActivity extends AppCompatActivity {
         forgot_pass = findViewById(R.id.forgotpass);
         final ProgressDialog dialog = new ProgressDialog(this);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String USER = dataSnapshot.getValue(User.class).getUser();
-                Log.e("123", "asdfg" + USER);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
+//        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                String USER = dataSnapshot.getValue(User.class).getUser();
+//                Log.e("123", "asdfg" + USER);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
         fAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
 
-                    if (USER.equals("Member")) {
-                        startActivity(new Intent(getApplicationContext(), M_HomeActivity.class));
-                    } else if (USER.equals("Volunteer")) {
-                        startActivity(new Intent(getApplicationContext(), V_HomeActivity.class));
-                    }
+//                    if (USER.equals("Member")) {
+//                        startActivity(new Intent(getApplicationContext(), M_HomeActivity.class));
+//                    } else if (USER.equals("Volunteer")) {
+//                        startActivity(new Intent(getApplicationContext(), V_HomeActivity.class));
+//                    }
 //                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 }
             }
@@ -169,18 +169,4 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        fAuth.addAuthStateListener(fAuthListener);
-//    }
-
-//    @Override
-//    public void onBackPressed() {
-//        Intent setIntent = new Intent(Intent.ACTION_MAIN);
-//        setIntent.addCategory(Intent.CATEGORY_HOME);
-//        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(setIntent);
-//        finish();
-//    }
 }

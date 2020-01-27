@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MemberActivity"></activity>
+        <activity android:name=".Alloted_req_Activity"></activity>
+        <activity android:name=".Pending_req_Activity" />
+        <activity android:name=".Req_history_Activity" />
+        <activity android:name=".My_req_Activity" />
+        <activity android:name=".Apply_for_req_Activity" />
+        <activity android:name=".MemberActivity" />
         <activity android:name=".VolunteerActivity" />
         <activity android:name=".Nav_ContactsActivity" />
         <activity android:name=".Nav_MessageActivity" />
