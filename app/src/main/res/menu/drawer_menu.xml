@@ -14,12 +14,12 @@
             android:icon="@drawable/my_profile"/>
         <item
             android:id="@+id/nav_reward"
-            android:icon="@drawable/rewards"
+            android:icon="@drawable/reward_icon"
             android:title="My Reward" />
         <item
             android:id="@+id/nav_message"
-            android:icon="@drawable/messages"
-            android:title="Message to President/ Feedback" />
+            android:icon="@drawable/message_logo"
+            android:title="Message to President" />
         <item
             android:id="@+id/nav_contacts"
             android:icon="@drawable/contacts"

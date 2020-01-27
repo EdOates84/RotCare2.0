@@ -203,7 +203,7 @@
                 android:id="@+id/rdate"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Date Of Birth"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"

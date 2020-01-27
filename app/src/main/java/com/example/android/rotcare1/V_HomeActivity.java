@@ -63,32 +63,44 @@ public class V_HomeActivity extends AppCompatActivity implements NavigationView.
         switch (menuItem.getItemId()){
 
             case R.id.nav_home:
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeButtonEnabled(true);
                 startActivity(new Intent(V_HomeActivity.this,Nav_HomeActivity.class));
                 break;
 
             case R.id.nav_profile:
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeButtonEnabled(true);
                 startActivity(new Intent(V_HomeActivity.this,Nav_ProfileActivity.class));
                 break;
 
             case R.id.nav_reward:
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeButtonEnabled(true);
                 startActivity(new Intent(V_HomeActivity.this,Nav_RewardActivity.class));
                 break;
 
             case R.id.nav_message:
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeButtonEnabled(true);
                 startActivity(new Intent(V_HomeActivity.this,Nav_MessageActivity.class));
                 break;
 
             case R.id.nav_contacts:
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeButtonEnabled(true);
                 startActivity(new Intent(V_HomeActivity.this,Nav_ContactsActivity.class));
                 break;
 
 
             case R.id.nav_logout:
+
                 startActivity(new Intent(V_HomeActivity.this, LoginActivity.class));
                 fAuth.signOut();
                 finish();
                 break;
         }
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
 
