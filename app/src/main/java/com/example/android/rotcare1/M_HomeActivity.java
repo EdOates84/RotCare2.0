@@ -11,14 +11,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.autofill.TextValueSanitizer;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import org.w3c.dom.Text;
 
 public class M_HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private FirebaseAuth fAuth;
+    private TextView email;
+    FirebaseUser CurrentUser;
+    FirebaseAuth.AuthStateListener fAuthlistener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +38,19 @@ public class M_HomeActivity extends AppCompatActivity implements NavigationView.
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
+        CurrentUser = fAuth.getCurrentUser();
+        fAuthlistener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() == null) {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                }
+            }
+        };
 
         NavigationView navigationView = findViewById(R.id.nev_view);
         navigationView.setNavigationItemSelectedListener(this);
-//        updateNavHeader();
+        updateNavHeader();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -76,6 +94,19 @@ public class M_HomeActivity extends AppCompatActivity implements NavigationView.
         return true;
 
     }
+
+    public void updateNavHeader() {
+
+        NavigationView navigationView = findViewById(R.id.nev_view);
+        View headerView = navigationView.getHeaderView(0);
+//        name =  headerView.findViewById(R.id.profile_name);
+        if (CurrentUser != null) {
+            email = headerView.findViewById(R.id.profile_email);
+//        name.setText(CurrentUser.getDisplayName());
+            email.setText(CurrentUser.getEmail());
+        }
+
+    }
     @Override
     public void onBackPressed() {
         Intent setIntent = new Intent(Intent.ACTION_MAIN);
@@ -84,4 +115,10 @@ public class M_HomeActivity extends AppCompatActivity implements NavigationView.
         startActivity(setIntent);
         finish();
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        fAuth.addAuthStateListener(fAuthlistener);
+    }
+
 }

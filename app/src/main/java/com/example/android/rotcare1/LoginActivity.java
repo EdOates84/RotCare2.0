@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -32,7 +39,10 @@ public class LoginActivity extends AppCompatActivity {
     TextView Create_user,forgot_pass;
     String Usertype;
     private FirebaseAuth fAuth;
+    FirebaseUser Current_User;
     private FirebaseAuth.AuthStateListener fAuthListener;
+    DatabaseReference mDatabase;
+    String USER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         MultiDex.install(this);
         setContentView(R.layout.activity_login);
 
+        fAuth = FirebaseAuth.getInstance();
+        Current_User = fAuth.getCurrentUser();
         mail = findViewById(R.id.loginmail);
         password = findViewById(R.id.loginpass);
         user_type = findViewById(R.id.usertype_spin);
@@ -48,25 +60,38 @@ public class LoginActivity extends AppCompatActivity {
         forgot_pass = findViewById(R.id.forgotpass);
         final ProgressDialog dialog = new ProgressDialog(this);
 
-//        fAuthListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                if (firebaseAuth.getCurrentUser() != null){
-//
-//                    if (Usertype.equals("Member")){
-//                        startActivity(new Intent(getApplicationContext(),M_HomeActivity.class));
-//                    }
-//                    else if (Usertype.equals("Volunteer")){
-//                        startActivity(new Intent(getApplicationContext(),V_HomeActivity.class));
-//                    }
-////                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                }
-//            }
-//        };
-        fAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String USER = dataSnapshot.getValue(User.class).getUser();
+                Log.e("123", "asdfg" + USER);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        fAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() != null) {
+
+                    if (USER.equals("Member")) {
+                        startActivity(new Intent(getApplicationContext(), M_HomeActivity.class));
+                    } else if (USER.equals("Volunteer")) {
+                        startActivity(new Intent(getApplicationContext(), V_HomeActivity.class));
+                    }
+//                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                }
+            }
+        };
 
 
-        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this,R.array.User_type,android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.User_type, android.R.layout.simple_spinner_item);
         usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         user_type.setAdapter(usertype_adapter);
 
@@ -79,15 +104,15 @@ public class LoginActivity extends AppCompatActivity {
                 Usertype = user_type.getSelectedItem().toString();
 
 
-                if(TextUtils.isEmpty(Mail)){
+                if (TextUtils.isEmpty(Mail)) {
                     mail.setError("Email is required");
                     return;
                 }
-                if(TextUtils.isEmpty(Password)){
+                if (TextUtils.isEmpty(Password)) {
                     password.setError("Password is required");
                     return;
                 }
-                if(password.length() <6) {
+                if (password.length() < 6) {
                     password.setError("Password must be >= 6 characters");
                     return;
                 }
@@ -95,8 +120,7 @@ public class LoginActivity extends AppCompatActivity {
 //                dialog.show();
                 if (Usertype.equals("User Type")) {
                     Toast.makeText(LoginActivity.this, "Select User", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     dialog.setMessage("Signing you in...");
                     dialog.show();
 
@@ -121,15 +145,29 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         Create_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
     }
+
+    @Override
+    protected void onStart () {
+        super.onStart();
+        fAuth.addAuthStateListener(fAuthListener);
+    }
+
+        @Override
+        public void onBackPressed() {
+            Intent setIntent = new Intent(Intent.ACTION_MAIN);
+            setIntent.addCategory(Intent.CATEGORY_HOME);
+            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(setIntent);
+            finish();
+        }
+
 
 //    @Override
 //    protected void onStart() {
