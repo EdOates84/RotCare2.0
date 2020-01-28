@@ -54,46 +54,27 @@ public class LoginActivity extends AppCompatActivity {
         Current_User = fAuth.getCurrentUser();
         mail = findViewById(R.id.loginmail);
         password = findViewById(R.id.loginpass);
-        user_type = findViewById(R.id.usertype_spin);
+//        user_type = findViewById(R.id.usertype_spin);
         loginbtn = findViewById(R.id.sign_btn);
         Create_user = findViewById(R.id.create_user);
         forgot_pass = findViewById(R.id.forgotpass);
         final ProgressDialog dialog = new ProgressDialog(this);
 
-//        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
-//        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                String USER = dataSnapshot.getValue(User.class).getUser();
-//                Log.e("123", "asdfg" + USER);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+
 
         fAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-
-//                    if (USER.equals("Member")) {
-//                        startActivity(new Intent(getApplicationContext(), M_HomeActivity.class));
-//                    } else if (USER.equals("Volunteer")) {
-//                        startActivity(new Intent(getApplicationContext(), V_HomeActivity.class));
-//                    }
-//                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 }
             }
         };
 
 
-        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.User_type, android.R.layout.simple_spinner_item);
-        usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        user_type.setAdapter(usertype_adapter);
+//        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.Login_User_type, android.R.layout.simple_spinner_item);
+//        usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        user_type.setAdapter(usertype_adapter);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,12 +110,8 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (task.isSuccessful()) {
-
-                                if (Usertype.equals("Member")) {
-                                    startActivity(new Intent(getApplicationContext(), M_HomeActivity.class));
-                                } else if (Usertype.equals("Volunteer")) {
-                                    startActivity(new Intent(getApplicationContext(), V_HomeActivity.class));
-                                }
+                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();

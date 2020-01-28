@@ -14,6 +14,5 @@ public class Nav_MessageActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar9);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

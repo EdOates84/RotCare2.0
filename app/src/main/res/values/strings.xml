@@ -23,4 +23,9 @@
         <item>Volunteer</item>
         <item>Both</item>
     </string-array>
+    <string-array name="Login_User_type">
+        <item>User Type</item>
+        <item>Member</item>
+        <item>Volunteer</item>
+    </string-array>
 </resources>

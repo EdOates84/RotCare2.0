@@ -14,6 +14,5 @@ public class Nav_ContactsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar7);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

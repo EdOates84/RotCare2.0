@@ -68,7 +68,7 @@
                 android:id="@+id/loginmail"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="50dp"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
@@ -87,23 +87,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loginmail" />
 
-            <Spinner
-                android:id="@+id/usertype_spin"
-                android:layout_width="298dp"
-                android:layout_height="60dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loginpass" />
-
             <Button
                 android:id="@+id/sign_btn"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:text="Sign In"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/usertype_spin" />
+                app:layout_constraintTop_toBottomOf="@+id/loginpass" />
 
             <TextView
                 android:id="@+id/forgotpass"

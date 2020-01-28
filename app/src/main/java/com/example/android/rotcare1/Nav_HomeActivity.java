@@ -14,6 +14,5 @@ public class Nav_HomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar8);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
