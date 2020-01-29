@@ -28,6 +28,8 @@
             android:parentActivityName=".M_HomeActivity"
             android:label="Apply for Request"
             />
+        <activity android:name=".MainActivity" />
+
         <activity android:name=".MemberActivity" />
         <activity android:name=".VolunteerActivity" />
         <activity android:name=".Nav_ContactsActivity" />

@@ -15,5 +15,6 @@ public class Nav_RewardActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar11);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 }

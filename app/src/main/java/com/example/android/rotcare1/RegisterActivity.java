@@ -110,6 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                register();
                 final String Name = name.getText().toString().trim();
                 final String Mail = mail.getText().toString().trim();
                 String Password = password.getText().toString().trim();
@@ -204,7 +205,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
 
                                             Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                         }
                                     }
                                 });
@@ -224,14 +225,21 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent setIntent = new Intent(Intent.ACTION_MAIN);
-        setIntent.addCategory(Intent.CATEGORY_HOME);
-        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(setIntent);
-        finish();
-    }
+//    public void register(){
+//        intialize();
+//        if (!validate()){
+//
+//        }
+//    }
+
+//    @Override
+//    public void onBackPressed() {
+//        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+//        setIntent.addCategory(Intent.CATEGORY_HOME);
+//        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(setIntent);
+//        finish();
+//    }
 
 //    private boolean isValidMobile(String phone) {
 //        return android.util.Patterns.PHONE.matcher(phone).matches();

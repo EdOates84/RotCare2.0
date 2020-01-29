@@ -24,7 +24,7 @@ public class V_HomeActivity extends AppCompatActivity implements NavigationView.
     private FirebaseAuth fAuth;
     private TextView email;
     FirebaseUser CurrentUser;
-    FirebaseAuth.AuthStateListener fAuthlistener;
+//    FirebaseAuth.AuthStateListener fAuthlistener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +36,15 @@ public class V_HomeActivity extends AppCompatActivity implements NavigationView.
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
         CurrentUser = fAuth.getCurrentUser();
-        fAuthlistener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-
-                }
-            }
-        };
+//        fAuthlistener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                if (firebaseAuth.getCurrentUser() == null) {
+//                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//
+//                }
+//            }
+//        };
 
         NavigationView navigationView = findViewById(R.id.nev_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -112,12 +112,12 @@ public class V_HomeActivity extends AppCompatActivity implements NavigationView.
             drawer.closeDrawer(GravityCompat.START);
 
         } else {
-
-            Intent setIntent = new Intent(Intent.ACTION_MAIN);
-            setIntent.addCategory(Intent.CATEGORY_HOME);
-            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(setIntent);
-            finish();
+//
+//            Intent setIntent = new Intent(Intent.ACTION_MAIN);
+//            setIntent.addCategory(Intent.CATEGORY_HOME);
+//            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(setIntent);
+//            finish();
         }
     }
 
@@ -135,11 +135,11 @@ public class V_HomeActivity extends AppCompatActivity implements NavigationView.
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        fAuth.addAuthStateListener(fAuthlistener);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        fAuth.addAuthStateListener(fAuthlistener);
+//    }
 }
 
 //    @Override

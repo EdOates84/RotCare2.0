@@ -13,6 +13,8 @@ public class Nav_ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nav__profile);
         Toolbar toolbar = findViewById(R.id.toolbar10);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 }

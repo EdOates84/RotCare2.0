@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String Mail = mail.getText().toString().trim();
                 String Password = password.getText().toString().trim();
-                Usertype = user_type.getSelectedItem().toString();
+//                Usertype = user_type.getSelectedItem().toString();
 
 
                 if (TextUtils.isEmpty(Mail)) {
@@ -99,9 +99,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
 //                dialog.setMessage("Signing you in...");
 //                dialog.show();
-                if (Usertype.equals("User Type")) {
-                    Toast.makeText(LoginActivity.this, "Select User", Toast.LENGTH_SHORT).show();
-                } else {
+//                if (Usertype.equals("User Type")) {
+//                    Toast.makeText(LoginActivity.this, "Select User", Toast.LENGTH_SHORT).show();
+//                } else {
                     dialog.setMessage("Signing you in...");
                     dialog.show();
 
@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     });
                 }
-            }
+//            }
         });
         Create_user.setOnClickListener(new View.OnClickListener() {
             @Override
