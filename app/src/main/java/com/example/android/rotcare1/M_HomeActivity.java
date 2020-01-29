@@ -34,9 +34,9 @@ public class M_HomeActivity extends AppCompatActivity implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m__home);
 
-        fAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        fAuth = FirebaseAuth.getInstance();
         drawer = findViewById(R.id.drawer_layout);
         CurrentUser = fAuth.getCurrentUser();
         fAuthlistener = new FirebaseAuth.AuthStateListener() {

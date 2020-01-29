@@ -11,25 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Alloted_req_Activity"
+        <activity
+            android:name=".Alloted_req_Activity"
             android:label="Alloted Request"
-            android:parentActivityName=".V_HomeActivity"></activity>
-        <activity android:name=".Pending_req_Activity"
+            android:parentActivityName=".V_HomeActivity" />
+        <activity
+            android:name=".Pending_req_Activity"
             android:label="Pending Request"
-            android:parentActivityName=".V_HomeActivity"/>
-        <activity android:name=".Req_history_Activity"
+            android:parentActivityName=".V_HomeActivity" />
+        <activity
+            android:name=".Req_history_Activity"
             android:label="Request History"
-            android:parentActivityName=".M_HomeActivity"/>
-        <activity android:name=".My_req_Activity"
-            android:parentActivityName=".M_HomeActivity"
+            android:parentActivityName=".M_HomeActivity" />
+        <activity
+            android:name=".My_req_Activity"
             android:label="My Request"
-            />
-        <activity android:name=".Apply_for_req_Activity"
-            android:parentActivityName=".M_HomeActivity"
+            android:parentActivityName=".M_HomeActivity" />
+        <activity
+            android:name=".Apply_for_req_Activity"
             android:label="Apply for Request"
-            />
+            android:parentActivityName=".M_HomeActivity" />
         <activity android:name=".MainActivity" />
-
         <activity android:name=".MemberActivity" />
         <activity android:name=".VolunteerActivity" />
         <activity android:name=".Nav_ContactsActivity" />
