@@ -25,7 +25,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".My_req_Activity"
-            android:label="My Request"
+            android:label="Requests Status"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Apply_for_req_Activity"
