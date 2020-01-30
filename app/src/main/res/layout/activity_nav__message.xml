@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Nav_MessageActivity">
 
-<!--    <include-->
-<!--        android:id="@+id/toolbar9"-->
-<!--        layout="@layout/toolbar" />-->
+    <include
+        android:id="@+id/toolbar9"
+        layout="@layout/toolbar" />
 
 
     <TextView

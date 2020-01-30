@@ -92,33 +92,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId()){
 
-            case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_HomeActivity()).commit();
+//            case R.id.nav_home:
+////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_HomeActivity()).commit();
 //                startActivity(new Intent(MainActivity.this,Nav_HomeActivity.class));
-                break;
+//                break;
 
             case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ProfileActivity()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ProfileActivity()).commit();
 
-//                startActivity(new Intent(MainActivity.this,Nav_ProfileActivity.class));
+                startActivity(new Intent(MainActivity.this,Nav_ProfileActivity.class));
                 break;
 
             case R.id.nav_reward:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_RewardActivity()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_RewardActivity()).commit();
 
-//                startActivity(new Intent(MainActivity.this,Nav_RewardActivity.class));
+                startActivity(new Intent(MainActivity.this,Nav_RewardActivity.class));
                 break;
 
             case R.id.nav_message:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_MessageActivity()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_MessageActivity()).commit();
 
-//                startActivity(new Intent(MainActivity.this,Nav_MessageActivity.class));
+                startActivity(new Intent(MainActivity.this,Nav_MessageActivity.class));
                 break;
 
             case R.id.nav_contacts:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ContactsActivity()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ContactsActivity()).commit();
 
-//                startActivity(new Intent(MainActivity.this,Nav_ContactsActivity.class));
+                startActivity(new Intent(MainActivity.this,Nav_ContactsActivity.class));
                 break;
 
 
