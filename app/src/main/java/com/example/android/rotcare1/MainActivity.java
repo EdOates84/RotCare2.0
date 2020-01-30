@@ -93,23 +93,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()){
 
             case R.id.nav_home:
-                startActivity(new Intent(MainActivity.this,Nav_HomeActivity.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_HomeActivity()).commit();
+//                startActivity(new Intent(MainActivity.this,Nav_HomeActivity.class));
                 break;
 
             case R.id.nav_profile:
-                startActivity(new Intent(MainActivity.this,Nav_ProfileActivity.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ProfileActivity()).commit();
+
+//                startActivity(new Intent(MainActivity.this,Nav_ProfileActivity.class));
                 break;
 
             case R.id.nav_reward:
-                startActivity(new Intent(MainActivity.this,Nav_RewardActivity.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_RewardActivity()).commit();
+
+//                startActivity(new Intent(MainActivity.this,Nav_RewardActivity.class));
                 break;
 
             case R.id.nav_message:
-                startActivity(new Intent(MainActivity.this,Nav_MessageActivity.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_MessageActivity()).commit();
+
+//                startActivity(new Intent(MainActivity.this,Nav_MessageActivity.class));
                 break;
 
             case R.id.nav_contacts:
-                startActivity(new Intent(MainActivity.this,Nav_ContactsActivity.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ContactsActivity()).commit();
+
+//                startActivity(new Intent(MainActivity.this,Nav_ContactsActivity.class));
                 break;
 
 
@@ -141,11 +150,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(Intent.ACTION_MAIN);
-        setIntent.addCategory(Intent.CATEGORY_HOME);
-        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(setIntent);
-        finish();
+        drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+
+        } else {
+
+            Intent setIntent = new Intent(Intent.ACTION_MAIN);
+            setIntent.addCategory(Intent.CATEGORY_HOME);
+            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(setIntent);
+            finish();
+        }
     }
 
     @Override
