@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0);
 //        name =  headerView.findViewById(R.id.profile_name);
         if (CurrentUser != null) {
-            email = headerView.findViewById(R.id.profile_email);
+            email = headerView.findViewById(R.id.profile_name);
 //        name.setText(CurrentUser.getDisplayName());
             email.setText(CurrentUser.getEmail());
         }

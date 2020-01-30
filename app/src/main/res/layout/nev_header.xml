@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/side_nav_bar"
     android:gravity="bottom"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="name@gmail.com"
-        android:id="@+id/profile_email"/>
+        android:id="@+id/profile_name"/>
 
 </LinearLayout>
