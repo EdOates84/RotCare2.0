@@ -42,20 +42,20 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="9dp"
             android:layout_toRightOf="@+id/image"
-            android:text="Graduate"
-            android:textSize="15sp" />
+            android:text="Subject: "
+            android:textSize="15sp"
+            android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/dpt"
+            android:id="@+id/sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/graduate"
+            android:layout_below="@+id/name"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="9dp"
-            android:layout_toRightOf="@+id/image"
-            android:text="Dpt"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_toRightOf="@+id/graduate"
+            android:text="sub"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
