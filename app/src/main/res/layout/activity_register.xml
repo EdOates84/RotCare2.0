@@ -17,7 +17,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,7 +34,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="17dp"
                 android:text="Register"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -80,17 +80,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <EditText
-                android:id="@+id/rdate"
-                android:layout_width="298dp"
-                android:layout_height="60dp"
-                android:ems="10"
-                android:hint="Date of Birth"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gender_spinner"
-                app:layout_constraintVertical_bias="0.0" />
+<!--            <EditText-->
+<!--                android:id="@+id/rdate"-->
+<!--                android:layout_width="298dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Date of Birth"-->
+<!--                android:inputType="date"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />-->
 
             <EditText
                 android:id="@+id/rphone"
@@ -122,6 +120,7 @@
                 android:id="@+id/rmail"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
+                android:layout_marginTop="60dp"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
@@ -188,6 +187,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/raddress"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <Spinner
+                android:id="@+id/user_typespinner"
+                android:layout_width="298dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="61dp"
+                app:layout_constraintBottom_toTopOf="@+id/rmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remergency"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/rdate"
+                android:layout_width="298dp"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:text="Date Of Birth"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

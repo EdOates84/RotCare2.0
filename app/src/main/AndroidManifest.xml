@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.rotcare1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +11,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".V_HomeActivity"></activity>
-        <activity android:name=".M_HomeActivity" />
+        <activity
+            android:name=".Alloted_req_Activity"
+            android:label="Alloted Request"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Pending_req_Activity"
+            android:label="Pending Request"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Req_history_Activity"
+            android:label="Request History"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".My_req_Activity"
+            android:label="Requests Status"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Apply_for_req_Activity"
+            android:label="Apply for Request"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MemberActivity" />
+        <activity android:name=".VolunteerActivity" />
+        <activity android:name=".Nav_ContactsActivity"
+            android:label="Contacts"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Nav_MessageActivity"
+            android:label="Message"
+            android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".Nav_RewardActivity"
+            android:label="My Rewards"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Nav_ProfileActivity"
+            android:label="My Profile"
+            android:parentActivityName=".MainActivity"/>
+
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

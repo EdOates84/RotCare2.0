@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+<!--        <item-->
+<!--            android:id="@+id/nav_home"-->
+<!--            android:icon="@drawable/ic_home"-->
+<!--            android:title="Home" />-->
+        <item
+            android:id="@+id/nav_profile"
+            android:title="My Profile"
+            android:icon="@drawable/my_profile"/>
+        <item
+            android:id="@+id/nav_reward"
+            android:icon="@drawable/reward_icon"
+            android:title="My Reward" />
+        <item
+            android:id="@+id/nav_message"
+            android:icon="@drawable/message_black"
+            android:title="Message to President" />
+        <item
+            android:id="@+id/nav_contacts"
+            android:icon="@drawable/contacts_black"
+            android:title="Contacts" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Log out"
+            android:icon="@drawable/logout"/>
+    </group>
+
+
+</menu>

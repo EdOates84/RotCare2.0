@@ -1,18 +1,30 @@
 <resources>
-    <string name="app_name">RotCare1</string>
+    <string name="app_name">RotCare</string>
+    <string name="logout">Logout</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="data_passing">abcd</string>
     <string-array name="Occupation">
+        <item>Occupation</item>
         <item>Student</item>
         <item>Self employed</item>
         <item>Government Servant</item>
         <item>Others</item>
     </string-array>
     <string-array name="Gender">
+        <item>Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Others</item>
     </string-array>
     <string-array name="User_type">
+        <item>User Type</item>
         <item>Member</item>
         <item>Volunteer</item>
+        <item>Both</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
