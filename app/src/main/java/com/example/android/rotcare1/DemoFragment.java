@@ -34,7 +34,7 @@ public class DemoFragment extends Fragment {
         pending_req.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),Pending_req_Activity.class));
+//                startActivity(new Intent(getContext(),Pending_req_Activity.class));
             }
         });
 

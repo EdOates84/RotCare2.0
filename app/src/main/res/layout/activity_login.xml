@@ -27,9 +27,9 @@
                 android:src="@drawable/background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -89,13 +89,16 @@
 
             <Button
                 android:id="@+id/sign_btn"
+                style="@style/MainButtonStyle"
                 android:layout_width="298dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
-                android:text="Sign In"
+                android:layout_marginTop="16dp"
+                android:text="Sign IN"
+                app:backgroundTint="@color/yellowTint"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loginpass" />
+                app:layout_constraintTop_toBottomOf="@+id/loginpass"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/forgotpass"

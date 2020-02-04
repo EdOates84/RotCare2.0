@@ -100,7 +100,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rdate"
+                app:layout_constraintTop_toBottomOf="@+id/dob_text_view"
                 app:layout_constraintVertical_bias="0.0" />
 
             <EditText
@@ -142,27 +142,37 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rmail" />
 
+            <RelativeLayout
+                android:id="@+id/occupation_drop_down"
+                android:layout_width="298dp"
+                android:layout_height="60dp"
+                android:background="@drawable/spinner_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rpassword">
             <Spinner
                 android:id="@+id/Occupation_spinner"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rpassword"
-                app:layout_constraintVertical_bias="0.0" />
+                />
+            </RelativeLayout>
 
 
-            <Spinner
-                android:id="@+id/gender_spinner"
+            <RelativeLayout
+                android:id="@+id/gender_drop_down"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="2dp"
-                android:spinnerMode="dropdown"
-                android:visibility="visible"
+                android:background="@drawable/spinner_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rname" />
+                app:layout_constraintTop_toBottomOf="@+id/rname">
+
+                <Spinner
+                    android:id="@+id/gender_spinner"
+                    android:layout_width="298dp"
+                    android:layout_height="60dp"
+                    android:spinnerMode="dropdown" />
+            </RelativeLayout>
 
             <EditText
                 android:id="@+id/raddress"
@@ -174,7 +184,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Occupation_spinner"
+                app:layout_constraintTop_toBottomOf="@+id/occupation_drop_down"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
@@ -182,33 +192,47 @@
                 android:layout_width="298dp"
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
+                app:backgroundTint="@color/yellowTint"
+                style="@style/MainButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/raddress"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <Spinner
-                android:id="@+id/user_typespinner"
+            <RelativeLayout
+                android:id="@+id/user_drop_down"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                android:layout_marginBottom="61dp"
+                android:background="@drawable/spinner_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/rmail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/remergency"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/remergency">
 
-            <TextView
-                android:id="@+id/rdate"
+                <Spinner
+                    android:id="@+id/user_typespinner"
+                    android:layout_width="298dp"
+                    android:layout_height="60dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dob_text_view"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                android:padding="5dp"
-                android:text="Date Of Birth"
-                android:textSize="24sp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/spinner_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />
+                app:layout_constraintTop_toBottomOf="@+id/gender_drop_down">
+
+                <TextView
+                    android:id="@+id/rdate"
+                    android:layout_width="298dp"
+                    android:layout_height="60dp"
+                    android:text="Date Of Birth"
+                    android:textSize="24sp" />
+            </RelativeLayout>
 
 
 

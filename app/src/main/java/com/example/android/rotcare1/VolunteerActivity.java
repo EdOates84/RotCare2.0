@@ -22,7 +22,7 @@ public class VolunteerActivity extends AppCompatActivity {
         pending_req.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Pending_req_Activity.class));
+//                startActivity(new Intent(getApplicationContext(),Pending_req_Activity.class));
             }
         });
 
