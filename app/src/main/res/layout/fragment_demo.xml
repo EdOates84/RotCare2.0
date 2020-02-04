@@ -18,9 +18,11 @@
 
     <Button
         android:id="@+id/v_alloted_req"
-        android:layout_width="wrap_content"
+        style="@style/MainButtonStyle"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="Alloted Requests"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,9 +32,11 @@
 
     <Button
         android:id="@+id/v_pending_req"
-        android:layout_width="wrap_content"
+        style="@style/MainButtonStyle"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="Pending Requests"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

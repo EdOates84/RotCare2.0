@@ -20,10 +20,12 @@
 
     <Button
         android:id="@+id/applyreq"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="Apply for Request"
+        style="@style/MainButtonStyle"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +34,12 @@
 
     <Button
         android:id="@+id/my_req"
-        android:layout_width="wrap_content"
+        style="@style/MainButtonStyle"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Requests Status"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,10 +48,12 @@
 
     <Button
         android:id="@+id/req_history"
-        android:layout_width="wrap_content"
+        style="@style/MainButtonStyle"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Request History"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
