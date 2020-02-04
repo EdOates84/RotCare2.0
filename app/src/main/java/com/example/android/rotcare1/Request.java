@@ -1,19 +1,28 @@
 package com.example.android.rotcare1;
 
 public class Request {
-    String sub,dis,name;
+    String sub,dis,name,uid;
     int status,count,token;
 
     public Request() {
     }
 
-    public Request(String sub, String dis, String name, int status, int count, int token) {
+    public Request(String sub, String dis, String name, String uid, int status, int count, int token) {
         this.sub = sub;
         this.dis = dis;
         this.name = name;
+        this.uid = uid;
         this.status = status;
         this.count = count;
         this.token = token;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public int getToken() {

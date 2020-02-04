@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.UUID;
+
 public class Apply_for_req_Activity extends AppCompatActivity {
 
     EditText subject,discription;
@@ -32,6 +34,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseUser Current_User;
     int count,tok;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getKey();
                 count = dataSnapshot.getValue(User.class).getCount();
+                name = dataSnapshot.getValue(User.class).getName();
             }
 
             @Override
@@ -88,10 +92,12 @@ public class Apply_for_req_Activity extends AppCompatActivity {
 
                 final String Subject = subject.getText().toString().trim();
                 final String Dis = discription.getText().toString().trim();
-                final String Name = fAuth.getCurrentUser().getDisplayName();
+                final String Name = name;
                 int Tok = tok+1;
                 int Count = count+1;
                 int Status = 0;
+                String uniqueId = UUID.randomUUID().toString();
+                final String Uid = fAuth.getCurrentUser().getUid();
 
 
                 if (TextUtils.isEmpty(Subject)) {
@@ -110,6 +116,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                         Subject,
                         Dis,
                         Name,
+                        Uid,
                         Status,
                         Count,
                         Tok
@@ -117,7 +124,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 dialog.setMessage("Please wait...");
                 dialog.show();
                 FirebaseDatabase.getInstance().getReference().child("Requests")
-                        .child(fAuth.getCurrentUser().getUid()).setValue(request).addOnCompleteListener(Apply_for_req_Activity.this, new OnCompleteListener<Void>() {
+                        .child(uniqueId).setValue(request).addOnCompleteListener(Apply_for_req_Activity.this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
