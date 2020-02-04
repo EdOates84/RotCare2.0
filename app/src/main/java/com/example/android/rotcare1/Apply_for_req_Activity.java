@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,16 +28,17 @@ public class Apply_for_req_Activity extends AppCompatActivity {
 
     EditText subject,discription;
     Button submitbtn;
-    DatabaseReference mDatabase,tDatabase,fDatabase;
+    DatabaseReference mDatabase,tDatabase,fDatabase,pDatabase,qDatabase;
     FirebaseAuth fAuth;
     FirebaseUser Current_User;
-    int tok,count;
+    int count,tok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_for_req_);
 
+        final ProgressDialog dialog = new ProgressDialog(this);
         subject = findViewById(R.id.suject_et);
         discription = findViewById(R.id.discription_et);
         submitbtn = findViewById(R.id.submit_btn);
@@ -46,11 +48,13 @@ public class Apply_for_req_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        tDatabase = FirebaseDatabase.getInstance().getReference().child("Last_Token");
+        tDatabase = FirebaseDatabase.getInstance().getReference().child("Last_Token").child("1");
         tDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                tok = dataSnapshot.getValue(Last_Token.class).getLast_tok();
+                String data = dataSnapshot.getKey();
+                tok = (dataSnapshot.getValue(Last_Token.class).getLast_tok());
+                Log.e("pappu",""+tok);
             }
 
             @Override
@@ -106,10 +110,12 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                         Subject,
                         Dis,
                         Name,
-                        Count,
                         Status,
+                        Count,
                         Tok
                 );
+                dialog.setMessage("Please wait...");
+                dialog.show();
                 FirebaseDatabase.getInstance().getReference().child("Requests")
                         .child(fAuth.getCurrentUser().getUid()).setValue(request).addOnCompleteListener(Apply_for_req_Activity.this, new OnCompleteListener<Void>() {
                     @Override
@@ -117,16 +123,46 @@ public class Apply_for_req_Activity extends AppCompatActivity {
 
                         if (task.isSuccessful()){
 
-
-                            Toast.makeText(Apply_for_req_Activity.this, "Request Submited", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),My_req_Activity.class));
                         }else {
                             Toast.makeText(Apply_for_req_Activity.this, "Something is wrong", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                 });
+                tDatabase = FirebaseDatabase.getInstance().getReference().child("Last_Token").child("1");
 
+                tDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        tDatabase.child("last_tok").setValue(tok+1);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+                qDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
+                qDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String data = dataSnapshot.getKey();
+                        qDatabase.child("count").setValue(count+1);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                Toast.makeText(Apply_for_req_Activity.this, "Request Submited", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),My_req_Activity.class));
+                dialog.dismiss();
             }
         });
 
