@@ -121,6 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String USER = user_type.getSelectedItem().toString();
                 final String Gender = gender.getSelectedItem().toString();
                 final String Occupation = occupation.getSelectedItem().toString();
+                final int Count = 0;
 
                 if (TextUtils.isEmpty(Name)) {
                     Toast.makeText(getApplicationContext(), "Enter name!", Toast.LENGTH_SHORT).show();
@@ -186,6 +187,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if (task.isSuccessful()) {
                                 User user = new User(
+                                        Count,
                                         Name,
                                         Mail,
                                         Address,
@@ -195,6 +197,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         Gender,
                                         Occupation,
                                         USER
+
                                 );
                                 FirebaseDatabase.getInstance().getReference().child("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

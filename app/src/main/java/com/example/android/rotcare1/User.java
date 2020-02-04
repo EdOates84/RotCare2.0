@@ -2,6 +2,7 @@ package com.example.android.rotcare1;
 
 public class User {
     String name, email, gender, occupation, address, Date, phone, emergency, user;
+    int count;
 //    Float phone,emergency;
 //    Long Date,phone,emergency;
 
@@ -9,8 +10,9 @@ public class User {
 
     }
 
-    public User(String name, String mail, String address, String phone, String emergency, String DATE, String gender, String occupation, String USER) {
+    public User( int count,String name, String mail, String address, String phone, String emergency, String DATE, String gender, String occupation, String USER ) {
 
+        this.count = count;
         this.name = name;
         this.email = mail;
         this.gender = gender;
@@ -20,6 +22,14 @@ public class User {
         this.phone = phone;
         this.emergency = emergency;
         this.user = USER;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public String getName() {
