@@ -2,6 +2,7 @@ package com.example.android.rotcare1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,16 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
         holder.name.setText(Request_List.get(position).getName());
         holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
-//        holder.Status.setText(Request_List.get(position).getStatus());
+//        holder.Status.setText(String.valueOf(Request_List.get(position).getStatus()));
+        if (Request_List.get(position).getStatus() == 0){
+            holder.Status.setText("Pending");
+        }
+        if (Request_List.get(position).getStatus() == 1){
+            holder.Status.setText("Process");
+        }
+        if (Request_List.get(position).getStatus() == 2){
+            holder.Status.setText("Complete");
+        }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
 
 //        holder.relative.setOnClickListener(new View.OnClickListener() {
