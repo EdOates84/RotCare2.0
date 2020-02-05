@@ -47,7 +47,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/graduate2"
+            android:id="@+id/subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
@@ -70,7 +70,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/sub2"
+            android:id="@+id/subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
