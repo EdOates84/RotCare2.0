@@ -22,7 +22,7 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
     private ArrayList<Request> Request_List;
     public String DoctorName;
 
-    public Pending_Req_Adapter(My_req_Activity c, ArrayList<Request> u) {
+    public Pending_Req_Adapter(Pending_req_Activity c, ArrayList<Request> u) {
         context = c;
         Request_List = u;
     }
