@@ -38,7 +38,7 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
 
 
         holder.name.setText(Request_List.get(position).getName());
-//        holder.token.setText(Request_List.get(position).getToken());
+        holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
 //        holder.Status.setText(Request_List.get(position).getStatus());
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);

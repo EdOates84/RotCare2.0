@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="30dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="15sp" />
