@@ -90,7 +90,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="95dp"
             android:layout_toRightOf="@+id/image"
-            android:text="Status.: "
+            android:text="Status: "
             android:textSize="15sp"
             android:textStyle="bold" />
 
