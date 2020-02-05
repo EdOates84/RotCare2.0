@@ -37,27 +37,28 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
 
-        holder.graduate.setText(Request_List.get(position).getDoc_graduate());
-        holder.dpt.setText(Request_List.get(position).getDoc_dpt());
-        holder.name.setText(Request_List.get(position).getDoc_name());
+        holder.name.setText(Request_List.get(position).getName());
+//        holder.token.setText(Request_List.get(position).getToken());
+        holder.subject.setText(Request_List.get(position).getSub());
+//        holder.Status.setText(Request_List.get(position).getStatus());
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
 
-        holder.relative.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, Doc_InfoActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                DoctorName = Doctors_List.get(position).getDoc_name();
-                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
-
-                intent.putExtra("image", Doctors_List.get(position).getDoc_profile());
-                intent.putExtra("name", Doctors_List.get(position).getDoc_name());
-                intent.putExtra("graduate", Doctors_List.get(position).getDoc_graduate());
-                intent.putExtra("dpt", Doctors_List.get(position).getDoc_dpt());
-                context.startActivity(intent);
-            }
-        });
+//        holder.relative.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, Doc_InfoActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//                DoctorName = Request_List.get(position).getDoc_name();
+//                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
+//
+//                intent.putExtra("image", Request_List.get(position).getDoc_profile());
+//                intent.putExtra("name", Request_List.get(position).getDoc_name());
+//                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
+//                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
+//                context.startActivity(intent);
+//            }
+//        });
 
 
     }
@@ -65,12 +66,12 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
 
     @Override
     public int getItemCount() {
-        return Doctors_List.size();
+        return Request_List.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView name, graduate, dpt;
+        TextView name,token,subject,alloted_to,mobile_no,Status;
         RelativeLayout relative;
 
         public MyViewHolder(View itemView) {
@@ -78,8 +79,11 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
 
             image = itemView.findViewById(R.id.image);
             name = itemView.findViewById(R.id.name);
-            graduate = itemView.findViewById(R.id.graduate);
-            dpt = itemView.findViewById(R.id.dpt);
+            token = itemView.findViewById(R.id.tok);
+            subject = itemView.findViewById(R.id.sub);
+            alloted_to = itemView.findViewById(R.id.alloted_name);
+            mobile_no = itemView.findViewById(R.id.alloted_mob_no);
+            Status = itemView.findViewById(R.id.status);
             relative = itemView.findViewById(R.id.relative);
         }
     }
