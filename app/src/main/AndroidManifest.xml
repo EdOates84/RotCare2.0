@@ -32,8 +32,6 @@
             android:label="Apply for Request"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".MemberActivity" />
-        <activity android:name=".VolunteerActivity" />
         <activity android:name=".Nav_ContactsActivity"
             android:label="Contacts"
             android:parentActivityName=".MainActivity" />
