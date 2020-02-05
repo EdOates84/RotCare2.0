@@ -91,6 +91,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.setMessage("Please wait...");
+                dialog.show();
 
                 final String Subject = subject.getText().toString().trim();
                 final String Dis = discription.getText().toString().trim();
@@ -114,8 +116,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                     discription.requestFocus();
                     return;
                 }
-                dialog.setMessage("Please wait...");
-                dialog.show();
+//                dialog.setMessage("Please wait...");
+//                dialog.show();
 
                 Request request = new Request(
                         Subject,
