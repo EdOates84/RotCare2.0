@@ -34,7 +34,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseUser Current_User;
     int count,tok;
-    String name;
+    String name,mobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +75,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 String data = dataSnapshot.getKey();
                 count = dataSnapshot.getValue(User.class).getCount();
                 name = dataSnapshot.getValue(User.class).getName();
+                mobile = dataSnapshot.getValue(User.class).getPhone();
+
             }
 
             @Override
@@ -98,6 +100,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 int Status = 0;
                 String uniqueId = UUID.randomUUID().toString();
                 final String Uid = fAuth.getCurrentUser().getUid();
+                final String Mobile = mobile;
 
 
                 if (TextUtils.isEmpty(Subject)) {
@@ -111,18 +114,20 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                     discription.requestFocus();
                     return;
                 }
+                dialog.setMessage("Please wait...");
+                dialog.show();
 
                 Request request = new Request(
                         Subject,
                         Dis,
                         Name,
                         Uid,
+                        Mobile,
                         Status,
                         Count,
                         Tok
                 );
-                dialog.setMessage("Please wait...");
-                dialog.show();
+
                 FirebaseDatabase.getInstance().getReference().child("Requests")
                         .child(uniqueId).setValue(request).addOnCompleteListener(Apply_for_req_Activity.this, new OnCompleteListener<Void>() {
                     @Override
