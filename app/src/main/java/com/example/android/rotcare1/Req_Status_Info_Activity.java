@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,6 +17,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
     DatabaseReference mDatabase;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,22 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         mobile = findViewById(R.id.mobile_no);
         status = findViewById(R.id.status);
         discription = findViewById(R.id.idiscription);
+        fAuth = FirebaseAuth.getInstance();
+        final String Current_User = fAuth.getCurrentUser().getUid();
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    
+                    if (Current_User == dataSnapshot1.getValue(Request.class).getUid()){
+
+                        name.setText(dataSnapshot1.getValue(Request.class).getName());
+                        token.setText(dataSnapshot1.getValue(Request.class).getToken());
+                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
+                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
+                        discription.setText(dataSnapshot1.getValue(Request.class).getDis());
+                    }
                 }
             }
 
