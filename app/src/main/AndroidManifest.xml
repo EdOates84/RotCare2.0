@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Req_History_Info_Activity"></activity>
+        <activity android:name=".Req_Status_Info_Activity" />
+        <activity android:name=".Alloted_Req_Info_Activity" />
+        <activity android:name=".Pending_Req_Info_Activity" />
         <activity
             android:name=".Alloted_req_Activity"
             android:label="Alloted Request"
@@ -32,20 +36,22 @@
             android:label="Apply for Request"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Nav_ContactsActivity"
+        <activity
+            android:name=".Nav_ContactsActivity"
             android:label="Contacts"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Nav_MessageActivity"
+        <activity
+            android:name=".Nav_MessageActivity"
             android:label="Message"
             android:parentActivityName=".MainActivity" />
-
-        <activity android:name=".Nav_RewardActivity"
+        <activity
+            android:name=".Nav_RewardActivity"
             android:label="My Rewards"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Nav_ProfileActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Nav_ProfileActivity"
             android:label="My Profile"
-            android:parentActivityName=".MainActivity"/>
-
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
