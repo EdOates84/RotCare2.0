@@ -44,6 +44,15 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
                         name.setText(dataSnapshot1.getValue(Request.class).getName());
                         token.setText(dataSnapshot1.getValue(Request.class).getToken());
                         subject.setText(dataSnapshot1.getValue(Request.class).getSub());
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
+                            status.setText("Pending");
+                        }
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
+                            status.setText("Process");
+                        }
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
+                            status.setText("Complete");
+                        }
                         status.setText(dataSnapshot1.getValue(Request.class).getStatus());
                         discription.setText(dataSnapshot1.getValue(Request.class).getDis());
                     }
