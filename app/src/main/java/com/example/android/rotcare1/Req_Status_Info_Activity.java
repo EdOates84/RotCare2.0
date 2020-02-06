@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,27 +34,29 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         discription = findViewById(R.id.idiscription);
         fAuth = FirebaseAuth.getInstance();
         final String Current_User = fAuth.getCurrentUser().getUid();
+        Log.e("asdfgh", "onCreate: "+Current_User );
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (Current_User == dataSnapshot1.getValue(Request.class).getUid()){
+                    if (Current_User.equals(dataSnapshot1.getValue(Request.class).getUid())){
+                        Log.e("asdfgh", "compare: "+dataSnapshot1.getValue(Request.class).getUid() );
 
                         name.setText(dataSnapshot1.getValue(Request.class).getName());
-                        token.setText(dataSnapshot1.getValue(Request.class).getToken());
+//                        token.setText(dataSnapshot1.getValue(Request.class).getToken());
                         subject.setText(dataSnapshot1.getValue(Request.class).getSub());
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
-                            status.setText("Pending");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
-                            status.setText("Process");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
-                            status.setText("Complete");
-                        }
-                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
+//                            status.setText("Pending");
+//                        }
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
+//                            status.setText("Process");
+//                        }
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
+//                            status.setText("Complete");
+//                        }
+//                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
                         discription.setText(dataSnapshot1.getValue(Request.class).getDis());
                     }
                 }

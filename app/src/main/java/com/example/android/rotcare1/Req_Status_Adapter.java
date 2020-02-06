@@ -53,22 +53,22 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
         }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
 
-//        holder.relative.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, Doc_InfoActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
+        holder.relative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Req_Status_Info_Activity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
 //                DoctorName = Request_List.get(position).getDoc_name();
-//                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
-//
+                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
+
 //                intent.putExtra("image", Request_List.get(position).getDoc_profile());
 //                intent.putExtra("name", Request_List.get(position).getDoc_name());
 //                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
 //                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
-//                context.startActivity(intent);
-//            }
-//        });
+                context.startActivity(intent);
+            }
+        });
 
 
     }
