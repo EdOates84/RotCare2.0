@@ -21,7 +21,7 @@
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/backgroung_border"
         android:fadingEdge="none"
         android:focusableInTouchMode="false"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:text="Subject: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="60dp"
             android:text="Alloted To: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="74dp"
+            android:layout_marginTop="85dp"
             android:text="Mobile No.: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="95dp"
+            android:layout_marginTop="110dp"
             android:text="Status: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -105,7 +105,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@+id/token"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/sub"
@@ -115,7 +115,7 @@
             android:layout_marginLeft="-15dp"
             android:layout_marginTop="30dp"
             android:layout_toRightOf="@+id/token"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/status"
@@ -125,7 +125,7 @@
             android:layout_marginLeft="-20dp"
             android:layout_marginTop="95dp"
             android:layout_toRightOf="@+id/token"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/alloted_name"
@@ -135,7 +135,7 @@
             android:layout_marginLeft="9dp"
             android:layout_marginTop="49dp"
             android:layout_toRightOf="@+id/token"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/alloted_mob_no"
@@ -145,7 +145,15 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="74dp"
             android:layout_toRightOf="@+id/token"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/status2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
     </RelativeLayout>
@@ -160,4 +168,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
