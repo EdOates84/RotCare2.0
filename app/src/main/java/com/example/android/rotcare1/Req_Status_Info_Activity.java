@@ -50,7 +50,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         name.setText(sname);
         token.setText(stoken);
         subject.setText(ssubject);
-        status.setText(sstatus);
+//        status.setText(sstatus);
 
 
 
