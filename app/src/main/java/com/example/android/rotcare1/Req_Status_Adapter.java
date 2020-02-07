@@ -70,6 +70,8 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
                 intent.putExtra("token", Request_List.get(position).getToken());
                 intent.putExtra("subject", Request_List.get(position).getSub());
                 intent.putExtra("status", Request_List.get(position).getStatus());
+//                intent.putExtra("alloted_to", Request_List.get(position));
+//                intent.putExtra("mobile_no", Request_List.get(position).getStatus());
 
                 context.startActivity(intent);
             }

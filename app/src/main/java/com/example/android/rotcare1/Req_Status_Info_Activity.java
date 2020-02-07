@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Req_Status_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
+    String sname,stoken,ssubject,salloted,smobile,sstatus;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
@@ -39,6 +40,17 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         final String Current_User = fAuth.getCurrentUser().getUid();
         Log.e("asdfgh", "onCreate: "+Current_User );
+
+        sname = getIntent().getStringExtra("name");
+        stoken = getIntent().getStringExtra("token");
+        ssubject = getIntent().getStringExtra("subject");
+        salloted = getIntent().getStringExtra("status");
+        smobile = getIntent().getStringExtra("mobile");
+        sstatus = getIntent().getStringExtra("alloted");
+
+
+
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
