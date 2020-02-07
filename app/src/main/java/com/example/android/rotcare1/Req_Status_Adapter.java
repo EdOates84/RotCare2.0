@@ -65,10 +65,12 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
                 Name = Request_List.get(position).getName();
 //                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
 
-                intent.putExtra("image", Request_List.get(position).getDoc_profile());
-                intent.putExtra("name", Request_List.get(position).getDoc_name());
-                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
-                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
+//                intent.putExtra("image", Request_List.get(position));
+                intent.putExtra("name", Request_List.get(position).getName());
+                intent.putExtra("token", Request_List.get(position).getToken());
+                intent.putExtra("subject", Request_List.get(position).getSub());
+                intent.putExtra("status", Request_List.get(position).getStatus());
+
                 context.startActivity(intent);
             }
         });
