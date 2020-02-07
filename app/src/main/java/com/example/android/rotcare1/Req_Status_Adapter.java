@@ -16,11 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import static android.media.CamcorderProfile.get;
+
 public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.MyViewHolder> {
 
     private Context context;
     private ArrayList<Request> Request_List;
-    public String DoctorName;
+    public String Name;
 
     public Req_Status_Adapter(My_req_Activity c, ArrayList<Request> u) {
         context = c;
@@ -53,22 +55,40 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
         }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
 
+
         holder.relative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, Req_Status_Info_Activity.class);
+                Intent intent = new Intent(context,Req_Status_Info_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-//                DoctorName = Request_List.get(position).getDoc_name();
-                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
+                Name = Request_List.get(position).getName();
+//                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
 
-//                intent.putExtra("image", Request_List.get(position).getDoc_profile());
-//                intent.putExtra("name", Request_List.get(position).getDoc_name());
-//                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
-//                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
+                intent.putExtra("image", Request_List.get(position).getDoc_profile());
+                intent.putExtra("name", Request_List.get(position).getDoc_name());
+                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
+                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
                 context.startActivity(intent);
             }
         });
+
+//        holder.relative.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, Req_Status_Info_Activity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+////                DoctorName = Request_List.get(position).getDoc_name();
+//                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
+//
+////                intent.putExtra("image", Request_List.get(position).getDoc_profile());
+////                intent.putExtra("name", Request_List.get(position).getDoc_name());
+////                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
+////                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
+//                context.startActivity(intent);
+//            }
+//        });
 
 
     }
