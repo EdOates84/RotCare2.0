@@ -47,6 +47,11 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         salloted = getIntent().getStringExtra("status");
         smobile = getIntent().getStringExtra("mobile");
         sstatus = getIntent().getStringExtra("alloted");
+        name.setText(sname);
+        token.setText(stoken);
+        subject.setText(ssubject);
+        status.setText(sstatus);
+
 
 
 
@@ -60,9 +65,9 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
                     if (Current_User.equals(dataSnapshot1.getValue(Request.class).getUid())){
                         Log.e("asdfgh", "compare: "+dataSnapshot1.getValue(Request.class).getUid() );
 
-                        name.setText(dataSnapshot1.getValue(Request.class).getName());
+//                        name.setText(dataSnapshot1.getValue(Request.class).getName());
 //                        token.setText(dataSnapshot1.getValue(Request.class).getToken());
-                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
+//                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
 //                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
 //                            status.setText("Pending");
 //                        }
