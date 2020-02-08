@@ -44,13 +44,13 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
         holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
 //        holder.Status.setText(String.valueOf(Request_List.get(position).getStatus()));
-        if (Request_List.get(position).getStatus() == 0){
+        if (Request_List.get(position).getStatus() == 0) {
             holder.Status.setText("Pending");
         }
-        if (Request_List.get(position).getStatus() == 1){
+        if (Request_List.get(position).getStatus() == 1) {
             holder.Status.setText("Process");
         }
-        if (Request_List.get(position).getStatus() == 2){
+        if (Request_List.get(position).getStatus() == 2) {
             holder.Status.setText("Complete");
         }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
@@ -59,7 +59,7 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
         holder.relative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,Req_Status_Info_Activity.class);
+                Intent intent = new Intent(context, Req_Status_Info_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 Name = Request_List.get(position).getName();
@@ -69,6 +69,7 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
                 intent.putExtra("name", Request_List.get(position).getName());
                 intent.putExtra("token", Request_List.get(position).getToken());
                 intent.putExtra("subject", Request_List.get(position).getSub());
+                intent.putExtra("Uiid", Request_List.get(position).getUid());
 //                intent.putExtra("status", Request_List.get(position).getStatus());
 //                intent.putExtra("alloted_to", Request_List.get(position));
 //                intent.putExtra("mobile_no", Request_List.get(position).getStatus());
@@ -105,7 +106,7 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView name,token,subject,alloted_to,mobile_no,Status;
+        TextView name, token, subject, alloted_to, mobile_no, Status;
         RelativeLayout relative;
 
         public MyViewHolder(View itemView) {

@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Req_Status_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus;
+    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
@@ -30,17 +30,18 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_req__status__info_);
 
-        name = findViewById(R.id.iname);
-        token = findViewById(R.id.itoken);
-        subject = findViewById(R.id.isubject);
-        alloted = findViewById(R.id.ialloted_name);
+        name = findViewById(R.id.name);
+        token = findViewById(R.id.tok);
+        subject = findViewById(R.id.sub);
+        alloted = findViewById(R.id.alloted_name);
         mobile = findViewById(R.id.mobile_no);
         status = findViewById(R.id.status);
-        discription = findViewById(R.id.idiscription);
+        discription = findViewById(R.id.discription);
         fAuth = FirebaseAuth.getInstance();
         final String Current_User = fAuth.getCurrentUser().getUid();
         Log.e("asdfgh", "onCreate: "+Current_User );
 
+        uiid = getIntent().getStringExtra("Uiid");
         sname = getIntent().getStringExtra("name");
         stoken = getIntent().getStringExtra("token");
         ssubject = getIntent().getStringExtra("subject");
@@ -48,9 +49,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         smobile = getIntent().getStringExtra("mobile");
         sstatus = getIntent().getStringExtra("alloted");
         name.setText(sname);
-        token.setText(stoken);
         subject.setText(ssubject);
-//        status.setText(sstatus);
 
 
 
@@ -62,21 +61,20 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (Current_User.equals(dataSnapshot1.getValue(Request.class).getUid())){
-                        Log.e("asdfgh", "compare: "+dataSnapshot1.getValue(Request.class).getUid() );
+                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
 
 //                        name.setText(dataSnapshot1.getValue(Request.class).getName());
-//                        token.setText(dataSnapshot1.getValue(Request.class).getToken());
-//                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
-//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
-//                            status.setText("Pending");
-//                        }
-//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
-//                            status.setText("Process");
-//                        }
-//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
-//                            status.setText("Complete");
-//                        }
+                        token.setText(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()));
+                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
+                            status.setText("Pending");
+                        }
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
+                            status.setText("Process");
+                        }
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
+                            status.setText("Complete");
+                        }
 //                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
                         discription.setText(dataSnapshot1.getValue(Request.class).getDis());
                     }

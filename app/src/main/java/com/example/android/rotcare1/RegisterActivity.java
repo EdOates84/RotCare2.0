@@ -33,8 +33,8 @@ import java.util.Calendar;
 public class RegisterActivity extends AppCompatActivity {
 
     private TextView date;
-    private EditText name,mail,password,address,phone,emergency;
-    private Spinner occupation , gender , user_type;
+    private EditText name, mail, password, address, phone, emergency;
+    private Spinner occupation, gender, user_type;
     private Button registerbtn;
     private FirebaseAuth fAuth;
     private DatabaseReference mDatabase;
@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                 DatePickerDialog dialog = new DatePickerDialog(
                         RegisterActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        dateset,year,month,day);
+                        dateset, year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
@@ -95,15 +95,15 @@ public class RegisterActivity extends AppCompatActivity {
             }
         };
 
-        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this,R.array.User_type,android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.User_type, android.R.layout.simple_spinner_item);
         usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         user_type.setAdapter(usertype_adapter);
 
-        ArrayAdapter<CharSequence> gender_adapter = ArrayAdapter.createFromResource(this,R.array.Gender,android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> gender_adapter = ArrayAdapter.createFromResource(this, R.array.Gender, android.R.layout.simple_spinner_item);
         gender_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gender.setAdapter(gender_adapter);
 
-        ArrayAdapter<CharSequence> occupation_adapter = ArrayAdapter.createFromResource(this,R.array.Occupation, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> occupation_adapter = ArrayAdapter.createFromResource(this, R.array.Occupation, android.R.layout.simple_spinner_item);
         occupation_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         occupation.setAdapter(occupation_adapter);
 
@@ -178,7 +178,7 @@ public class RegisterActivity extends AppCompatActivity {
 //                }
 
 
-                if (Phone.length()==10 || Emergency.length()==10) {
+                if (Phone.length() == 10 || Emergency.length() == 10) {
                     dialog.setMessage("Registering you in...");
                     dialog.show();
                     fAuth.createUserWithEmailAndPassword(Mail, Password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
@@ -218,8 +218,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }
-                else {
+                } else {
                     Toast.makeText(RegisterActivity.this, "Please enter valid phone no. ", Toast.LENGTH_SHORT).show();
 
                 }
