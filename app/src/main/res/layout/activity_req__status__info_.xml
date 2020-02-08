@@ -38,8 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="80dp"
-            android:layout_marginTop="7dp"
-            android:text="Name"
+            android:layout_marginTop="6dp"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -80,7 +79,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginStart="13dp"
             android:layout_marginLeft="13dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="28dp"
             android:text="Subject: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -199,7 +198,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="13dp"
             android:layout_marginTop="22dp"
-            android:text="Discription : "
+            android:text=" Discription : "
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" />
