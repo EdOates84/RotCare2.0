@@ -55,7 +55,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="51dp"
+            android:layout_marginTop="53dp"
             android:text="Subject: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -69,7 +69,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="73dp"
+            android:layout_marginTop="75dp"
             android:text="Alloted To: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -83,7 +83,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="98dp"
+            android:layout_marginTop="100dp"
             android:text="Mobile No.: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -97,7 +97,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="122dp"
+            android:layout_marginTop="124dp"
             android:text="Status: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="-15dp"
-            android:layout_marginTop="51dp"
+            android:layout_marginTop="53dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="subject" />
@@ -130,9 +130,9 @@
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="-20dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="124dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="status" />
@@ -141,9 +141,9 @@
             android:id="@+id/discription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="138dp"
+            android:layout_marginTop="147dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="discription" />
@@ -152,9 +152,9 @@
             android:id="@+id/alloted_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="7dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="75dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="alloted name" />
@@ -163,9 +163,9 @@
             android:id="@+id/alloted_mob_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="100dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="alloted mobile" />
@@ -179,7 +179,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="145dp"
+            android:layout_marginTop="147dp"
             android:text="Discription : "
             android:textSize="20sp"
             android:textStyle="bold"
@@ -199,13 +199,26 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_toRightOf="@+id/textView3"
+            android:text="TextView"
+            android:textSize="20sp" />
+
 
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/iimage"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_account"
         app:layout_constraintBottom_toBottomOf="parent"
