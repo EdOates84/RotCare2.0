@@ -85,7 +85,5 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
             }
         });
     }
-}
 
-    }
 }
