@@ -42,15 +42,15 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
         holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
 
-        if (Request_List.get(position).getStatus() == 0) {
-            holder.Status.setText("Pending");
-        }
-        if (Request_List.get(position).getStatus() == 1) {
-            holder.Status.setText("Process");
-        }
-        if (Request_List.get(position).getStatus() == 2) {
-            holder.Status.setText("Complete");
-        }
+//        if (Request_List.get(position).getStatus() == 0) {
+//            holder.Status.setText("Pending");
+//        }
+//        if (Request_List.get(position).getStatus() == 1) {
+//            holder.Status.setText("Process");
+//        }
+//        if (Request_List.get(position).getStatus() == 2) {
+//            holder.Status.setText("Complete");
+//        }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
 
 
