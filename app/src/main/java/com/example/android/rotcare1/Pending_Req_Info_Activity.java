@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
     String sname,stoken,ssubject,salloted,smobile,sstatus,uiid;
+    Button Accept_btn;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
@@ -29,6 +32,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_pending__req__info_);
 
 
+        Accept_btn = findViewById(R.id.accept_btn);
         name = findViewById(R.id.name);
         token = findViewById(R.id.tok);
         subject = findViewById(R.id.sub);
@@ -83,6 +87,13 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        Accept_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
     }

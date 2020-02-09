@@ -55,22 +55,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="53dp"
+            android:layout_marginTop="55dp"
             android:text="Subject: "
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Alloted_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="75dp"
-            android:text="Alloted To: "
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -83,7 +69,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="78dp"
             android:text="Mobile No.: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -97,7 +83,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="124dp"
+            android:layout_marginTop="103dp"
             android:text="Status: "
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -109,7 +95,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="12dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="33dp"
+            android:layout_marginTop="30dp"
             android:layout_toEndOf="@+id/token"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
@@ -121,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="-15dp"
-            android:layout_marginTop="53dp"
+            android:layout_marginTop="55dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="subject" />
@@ -132,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="-20dp"
-            android:layout_marginTop="124dp"
+            android:layout_marginTop="103dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="status" />
@@ -143,21 +129,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="147dp"
+            android:layout_marginTop="126dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="discription" />
-
-        <TextView
-            android:id="@+id/alloted_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="75dp"
-            android:layout_toRightOf="@+id/token"
-            android:textSize="20sp"
-            tools:text="alloted name" />
 
         <TextView
             android:id="@+id/alloted_mob_no"
@@ -165,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="78dp"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
             tools:text="alloted mobile" />
@@ -179,7 +154,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="147dp"
+            android:layout_marginTop="126dp"
             android:text="Discription : "
             android:textSize="20sp"
             android:textStyle="bold"
