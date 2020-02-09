@@ -25,7 +25,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
     ImageView imageView;
     DatabaseReference mDatabase,uDatabase;
     FirebaseAuth fAuth;
-    String current_user;
+    String current_user,selected_name,selected_mobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +60,12 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
 
 
 
-        uDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        uDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_user);
         uDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               selected_name = dataSnapshot.getValue(Request.class).getName();
+               selected_mobile = dataSnapshot.getValue(Request.class).getMobile();
 
             }
 
