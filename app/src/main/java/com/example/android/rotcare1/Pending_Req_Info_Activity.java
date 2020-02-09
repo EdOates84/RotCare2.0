@@ -23,8 +23,9 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
     String sname,stoken,ssubject,salloted,smobile,sstatus,uiid;
     Button Accept_btn;
     ImageView imageView;
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabase,uDatabase;
     FirebaseAuth fAuth;
+    String current_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         status = findViewById(R.id.status);
         discription = findViewById(R.id.discription);
         fAuth = FirebaseAuth.getInstance();
+        current_user = fAuth.getCurrentUser().getUid();
         final String Current_User = fAuth.getCurrentUser().getUid();
         Log.e("asdfgh", "onCreate: "+Current_User );
 
@@ -58,6 +60,18 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
 
 
 
+        uDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        uDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,7 +107,17 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         Accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
     }
