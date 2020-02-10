@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,8 +36,8 @@ public class Nav_ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar10);
         setSupportActionBar(toolbar);
 
-        iimage = findViewById(R.id.imageView5);
-        iprofile = findViewById(R.id.profille);
+        final ProgressDialog dialog = new ProgressDialog(this);
+        iprofile = findViewById(R.id.profile);
         imail = findViewById(R.id.m);
         iphone = findViewById(R.id.p);
         ioccu = findViewById(R.id.o);
@@ -50,6 +51,8 @@ public class Nav_ProfileActivity extends AppCompatActivity {
         Current_user = fAuth.getCurrentUser().getUid();
 
 
+        dialog.setMessage("Please Wait...");
+        dialog.show();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_user);
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -59,6 +62,8 @@ public class Nav_ProfileActivity extends AppCompatActivity {
                 pphone.setText(dataSnapshot.getValue(User.class).getPhone());
                 poccu.setText(dataSnapshot.getValue(User.class).getOccupation());
                 padd.setText(dataSnapshot.getValue(User.class).getAddress());
+
+                dialog.dismiss();
             }
 
             @Override
