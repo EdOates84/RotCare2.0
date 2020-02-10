@@ -95,6 +95,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
                         }
 //                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
                         discription.setText(dataSnapshot1.getValue(Request.class).getDis());
+                        mobile.setText(dataSnapshot1.getValue(Request.class).getMobile());
                     }
                 }
             }

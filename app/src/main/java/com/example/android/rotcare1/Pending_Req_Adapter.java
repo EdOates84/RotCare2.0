@@ -41,6 +41,7 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
         holder.name.setText(Request_List.get(position).getName());
         holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
+        holder.mobile_no.setText(Request_List.get(position).getMobile());
 
 //        if (Request_List.get(position).getStatus() == 0) {
 //            holder.Status.setText("Pending");
