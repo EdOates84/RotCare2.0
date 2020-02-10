@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Nav_ProfileActivity extends AppCompatActivity {
 
-    TextView pmail,pphone,poccu,padd;
+    ImageView iprofile,imail,iphone,ioccu,iadd;
+    TextView pname,pmail,pphone,poccu,padd;
     FirebaseAuth fAuth;
     DatabaseReference mDatabase;
     String Current_user;
@@ -33,6 +35,12 @@ public class Nav_ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar10);
         setSupportActionBar(toolbar);
 
+        iprofile = findViewById(R.id.profille);
+        imail = findViewById(R.id.m);
+        iphone = findViewById(R.id.p);
+        ioccu = findViewById(R.id.o);
+        iadd = findViewById(R.id.a);
+        pname = findViewById(R.id.name);
         pmail = findViewById(R.id.mail);
         pphone = findViewById(R.id.phone_no);
         poccu = findViewById(R.id.occupation);

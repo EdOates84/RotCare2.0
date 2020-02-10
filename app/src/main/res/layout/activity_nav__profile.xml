@@ -28,11 +28,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="295dp">
+        android:layout_height="280dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="280dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -46,7 +46,8 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="45dp" />
+                android:layout_marginTop="45dp"
+                tools:srcCompat="@drawable/ic_account" />
 
             <TextView
                 android:id="@+id/Name"
@@ -74,6 +75,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/m"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 tools:srcCompat="@drawable/baseline_email_black_18dp" />
@@ -94,6 +96,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/p"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 tools:srcCompat="@drawable/baseline_phone_black_18dp" />
@@ -116,6 +119,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/o"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 tools:srcCompat="@drawable/baseline_horizontal_split_black_18dp" />
@@ -138,6 +142,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/a"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 tools:srcCompat="@drawable/baseline_location_city_black_18dp" />
