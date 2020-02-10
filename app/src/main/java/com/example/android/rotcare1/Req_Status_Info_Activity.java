@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Req_Status_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid;
+    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
@@ -43,13 +43,16 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
 
         uiid = getIntent().getStringExtra("Uiid");
         sname = getIntent().getStringExtra("name");
-        stoken = getIntent().getStringExtra("token");
+        stoken = getIntent().getStringExtra("tok");
         ssubject = getIntent().getStringExtra("subject");
         salloted = getIntent().getStringExtra("status");
         smobile = getIntent().getStringExtra("mobile");
         sstatus = getIntent().getStringExtra("alloted");
+        sdis = getIntent().getStringExtra("dis");
         name.setText(sname);
         subject.setText(ssubject);
+        token.setText(stoken);
+        discription.setText(sdis);
 
 
 
@@ -64,8 +67,8 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
                     if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
 
 //                        name.setText(dataSnapshot1.getValue(Request.class).getName());
-                        token.setText(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()));
-                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
+//                        token.setText(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()));
+//                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
                             status.setText("Pending");
                         }
@@ -76,7 +79,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
                             status.setText("Complete");
                         }
 //                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
-                        discription.setText(dataSnapshot1.getValue(Request.class).getDis());
+//                        discription.setText(dataSnapshot1.getValue(Request.class).getDis());
                     }
                 }
             }
