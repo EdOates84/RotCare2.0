@@ -38,7 +38,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         token = findViewById(R.id.tok);
         subject = findViewById(R.id.sub);
         alloted = findViewById(R.id.alloted_name);
-        mobile = findViewById(R.id.mobile_no);
+        mobile = findViewById(R.id.alloted_mob_no);
         status = findViewById(R.id.status);
         discription = findViewById(R.id.discription);
         fAuth = FirebaseAuth.getInstance();

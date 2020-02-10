@@ -127,7 +127,7 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
             token = itemView.findViewById(R.id.tok);
             subject = itemView.findViewById(R.id.sub);
             alloted_to = itemView.findViewById(R.id.alloted_name);
-            mobile_no = itemView.findViewById(R.id.alloted_mob_no);
+            mobile_no = itemView.findViewById(R.id.mobile_no);
             Status = itemView.findViewById(R.id.status);
             relative = itemView.findViewById(R.id.relative);
         }
