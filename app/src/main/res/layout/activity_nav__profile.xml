@@ -96,7 +96,6 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ic_phone_android_black_24dp"
                 tools:srcCompat="@drawable/baseline_phone_black_18dp" />
 
             <TextView
@@ -119,7 +118,6 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ic_group_add_black_24dp"
                 tools:srcCompat="@drawable/baseline_horizontal_split_black_18dp" />
 
             <TextView
@@ -142,7 +140,6 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ic_forum_black_24dp"
                 tools:srcCompat="@drawable/baseline_location_city_black_18dp" />
 
             <TextView
