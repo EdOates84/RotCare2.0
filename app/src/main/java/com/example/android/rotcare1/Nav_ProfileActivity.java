@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Nav_ProfileActivity extends AppCompatActivity {
 
-    ImageView iprofile,imail,iphone,ioccu,iadd;
+    ImageView iprofile,imail,iphone,ioccu,iadd,iimage;
     TextView pname,pmail,pphone,poccu,padd;
     FirebaseAuth fAuth;
     DatabaseReference mDatabase;
@@ -35,12 +35,13 @@ public class Nav_ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar10);
         setSupportActionBar(toolbar);
 
+        iimage = findViewById(R.id.imageView5);
         iprofile = findViewById(R.id.profille);
         imail = findViewById(R.id.m);
         iphone = findViewById(R.id.p);
         ioccu = findViewById(R.id.o);
         iadd = findViewById(R.id.a);
-        pname = findViewById(R.id.name);
+        pname = findViewById(R.id.Name);
         pmail = findViewById(R.id.mail);
         pphone = findViewById(R.id.phone_no);
         poccu = findViewById(R.id.occupation);
@@ -53,6 +54,7 @@ public class Nav_ProfileActivity extends AppCompatActivity {
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                pname.setText(dataSnapshot.getValue(User.class).getName());
                 pmail.setText(dataSnapshot.getValue(User.class).getEmail());
                 pphone.setText(dataSnapshot.getValue(User.class).getPhone());
                 poccu.setText(dataSnapshot.getValue(User.class).getOccupation());
