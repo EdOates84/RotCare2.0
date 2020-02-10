@@ -64,9 +64,8 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         uDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               selected_name = dataSnapshot.getValue(Request.class).getName();
-               selected_mobile = dataSnapshot.getValue(Request.class).getMobile();
-
+               selected_name = dataSnapshot.getValue(User.class).getName();
+               selected_mobile = dataSnapshot.getValue(User.class).getPhone();
             }
 
             @Override
@@ -112,6 +111,8 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
                 mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
 
                     }
 
