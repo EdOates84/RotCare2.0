@@ -7,9 +7,9 @@
     tools:context=".Nav_ProfileActivity"
     android:orientation="vertical">
 
-<!--    <include-->
-<!--        android:id="@+id/toolbar10"-->
-<!--        layout="@layout/toolbar" />-->
+    <include
+        android:id="@+id/toolbar10"
+        layout="@layout/toolbar" />
 
 
 <!--    <ImageView-->
@@ -28,14 +28,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="405dp">
+        android:layout_height="295dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="300dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:layout_marginStart="-1dp"
+            android:layout_marginTop="0dp"
             android:background="@drawable/gradientbackground"
             android:orientation="vertical">
 
@@ -52,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Wiliam Snoe"
+                android:text="Name"
                 android:textColor="#fff"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -74,7 +76,6 @@
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src=""
                 tools:srcCompat="@drawable/baseline_email_black_18dp" />
 
             <TextView
