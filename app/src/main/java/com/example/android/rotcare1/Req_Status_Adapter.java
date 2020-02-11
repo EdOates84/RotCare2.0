@@ -68,7 +68,6 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
 //                intent.putExtra("image", Request_List.get(position));
                 intent.putExtra("name", Request_List.get(position).getName());
                 intent.putExtra("tok", String.valueOf(Request_List.get(position).getToken()));
-                Log.e("asdf",""+ Request_List.get(position).getToken());
                 intent.putExtra("subject", Request_List.get(position).getSub());
                 intent.putExtra("Uiid", Request_List.get(position).getUid());
                 intent.putExtra("dis",Request_List.get(position).getDis());
