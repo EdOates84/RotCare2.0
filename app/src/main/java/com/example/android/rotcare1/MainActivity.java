@@ -109,11 +109,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this,Nav_RewardActivity.class));
                 break;
 
-            case R.id.nav_message:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_MessageActivity()).commit();
-
-                startActivity(new Intent(MainActivity.this,Nav_MessageActivity.class));
-                break;
+//            case R.id.nav_message:
+////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_MessageActivity()).commit();
+//
+//                startActivity(new Intent(MainActivity.this,Nav_MessageActivity.class));
+//                break;
 
             case R.id.nav_contacts:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ContactsActivity()).commit();
