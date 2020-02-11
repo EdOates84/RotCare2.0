@@ -62,7 +62,7 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
                     if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
 
 //                        name.setText(dataSnapshot1.getValue(Request.class).getName());
-                        token.setText(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()));
+//                        token.setText(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()));
                         subject.setText(dataSnapshot1.getValue(Request.class).getSub());
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
                             status.setText("Pending");
