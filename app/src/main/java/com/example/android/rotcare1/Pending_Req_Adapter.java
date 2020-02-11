@@ -86,7 +86,7 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
 //            holder.Status.setText("Complete");
 //        }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
-        
+
 
 
     }
