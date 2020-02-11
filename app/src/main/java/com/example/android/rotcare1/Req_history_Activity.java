@@ -48,6 +48,7 @@ public class Req_history_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
+//                    if()
                     list.add(u);
                 }
                 adapter = new Req_History_Adapter(Req_history_Activity.this, list);
@@ -62,10 +63,10 @@ public class Req_history_Activity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//        super.onBackPressed();
+//    }
 }
 

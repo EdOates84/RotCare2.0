@@ -1,6 +1,7 @@
 package com.example.android.rotcare1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,22 +49,28 @@ public class Req_History_Adapter extends RecyclerView.Adapter<Req_History_Adapte
         }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
 
-//        holder.relative.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, Doc_InfoActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//                DoctorName = Request_List.get(position).getDoc_name();
+        holder.relative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Req_History_Info_Activity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+//                Name = Request_List.get(position).getName();
 //                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
-//
-//                intent.putExtra("image", Request_List.get(position).getDoc_profile());
-//                intent.putExtra("name", Request_List.get(position).getDoc_name());
-//                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
-//                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
-//                context.startActivity(intent);
-//            }
-//        });
+
+//                intent.putExtra("image", Request_List.get(position));
+                intent.putExtra("name", Request_List.get(position).getName());
+                intent.putExtra("tok", String.valueOf(Request_List.get(position).getToken()));
+                intent.putExtra("subject", Request_List.get(position).getSub());
+                intent.putExtra("Uiid", Request_List.get(position).getUid());
+                intent.putExtra("dis",Request_List.get(position).getDis());
+//                intent.putExtra("status", Request_List.get(position).getStatus());
+//                intent.putExtra("alloted_to", Request_List.get(position));
+//                intent.putExtra("mobile_no", Request_List.get(position).getStatus());
+
+                context.startActivity(intent);
+            }
+        });
 
 
     }
