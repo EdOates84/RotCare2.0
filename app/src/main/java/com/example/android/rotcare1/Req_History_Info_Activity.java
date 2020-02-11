@@ -39,7 +39,7 @@ public class Req_History_Info_Activity extends AppCompatActivity {
 
         uiid = getIntent().getStringExtra("Uiid");
         sname = getIntent().getStringExtra("name");
-        stoken = getIntent().getStringExtra("token");
+        stoken = getIntent().getStringExtra("tok");
         ssubject = getIntent().getStringExtra("subject");
         salloted = getIntent().getStringExtra("status");
         smobile = getIntent().getStringExtra("mobile");
