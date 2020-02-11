@@ -109,7 +109,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="12dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="33dp"
+            android:layout_marginTop="30dp"
             android:layout_toEndOf="@+id/token"
             android:layout_toRightOf="@+id/token"
             android:textSize="20sp"
