@@ -62,7 +62,6 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 Name = Request_List.get(position).getName();
-//                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
 
 //                intent.putExtra("image", Request_List.get(position));
                 intent.putExtra("name", Request_List.get(position).getName());
@@ -87,23 +86,7 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
 //            holder.Status.setText("Complete");
 //        }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
-
-//        holder.relative.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, Doc_InfoActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//                DoctorName = Request_List.get(position).getDoc_name();
-//                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
-//
-//                intent.putExtra("image", Request_List.get(position).getDoc_profile());
-//                intent.putExtra("name", Request_List.get(position).getDoc_name());
-//                intent.putExtra("graduate", Request_List.get(position).getDoc_graduate());
-//                intent.putExtra("dpt", Request_List.get(position).getDoc_dpt());
-//                context.startActivity(intent);
-//            }
-//        });
+        
 
 
     }
