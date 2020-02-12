@@ -3,6 +3,7 @@ package com.example.android.rotcare1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DownloadManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Pending_Req_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis,key;
+    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis;
     Button Accept_btn;
     ImageView imageView;
     DatabaseReference mDatabase,uDatabase;
@@ -77,30 +78,29 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests").child(key);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                Log.e("apu",""+key);
-//                if ()
-//                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-//                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
-//
-//
-//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
-//                            status.setText("Pending");
-//                        }
-//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
-//                            status.setText("Process");
-//                        }
-//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
-//                            status.setText("Complete");
-//                        }
-//
-//
-//                    }
-//                }
+                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())){
+
+                        String key = dataSnapshot1.getKey();
+
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
+                            status.setText("Pending");
+                        }
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
+                            status.setText("Process");
+                        }
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
+                            status.setText("Complete");
+                        }
+
+
+                    }
+                }
             }
 
             @Override
@@ -115,10 +115,18 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
                 mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                            if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())) {
 
+                                String name = dataSnapshot1.getValue(Request.class).getName();
+                                String number = dataSnapshot1.getValue(Request.class).getMobile();
 
+                                String key = dataSnapshot1.getKey();
+                                mDatabase.child(key).child("Alloted_name").setValue(name);
+                                mDatabase.child(key).child("Alloted_no.").setValue(number);
 
-
+                            }
+                        }
                     }
 
                     @Override
