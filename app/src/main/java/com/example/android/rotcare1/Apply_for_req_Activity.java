@@ -144,7 +144,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                     }
                 });
 
-                Intent intent = new Intent(getApplicationContext(),Alloted_Req_Info_Activity.class);
+                Intent intent = new Intent(getApplicationContext(),Pending_Req_Info_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 intent.putExtra("unique",uniqueId);

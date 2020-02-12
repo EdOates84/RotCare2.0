@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Pending_Req_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis;
+    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis,key;
     Button Accept_btn;
     ImageView imageView;
     DatabaseReference mDatabase,uDatabase;
@@ -57,7 +57,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         name.setText(sname);
         subject.setText(ssubject);
         token.setText(stoken);
-        discription.setText(sdis);  
+        discription.setText(sdis);
 
 
 
@@ -77,27 +77,30 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests").child(key);
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
 
-
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
-                            status.setText("Pending");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
-                            status.setText("Process");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
-                            status.setText("Complete");
-                        }
-
-
-                    }
-                }
+                Log.e("apu",""+key);
+//                if ()
+//                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+//                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
+//
+//
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
+//                            status.setText("Pending");
+//                        }
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
+//                            status.setText("Process");
+//                        }
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
+//                            status.setText("Complete");
+//                        }
+//
+//
+//                    }
+//                }
             }
 
             @Override
