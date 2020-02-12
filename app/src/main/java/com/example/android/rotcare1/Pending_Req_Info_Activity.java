@@ -112,18 +112,17 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         Accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
                 mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                             if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())) {
 
-                                String name = dataSnapshot1.getValue(Request.class).getName();
-                                String number = dataSnapshot1.getValue(Request.class).getMobile();
-
                                 String key = dataSnapshot1.getKey();
-                                mDatabase.child(key).child("Alloted_name").setValue(name);
-                                mDatabase.child(key).child("Alloted_no.").setValue(number);
+                                Log.e("",""+key);
+                                mDatabase.child(key).child("Alloted_name").setValue(selected_name);
+                                mDatabase.child(key).child("Alloted_no.").setValue(selected_mobile);
 
                             }
                         }
