@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Pending_Req_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid;
+    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis;
     Button Accept_btn;
     ImageView imageView;
     DatabaseReference mDatabase,uDatabase;
@@ -53,8 +53,11 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         salloted = getIntent().getStringExtra("status");
         smobile = getIntent().getStringExtra("mobile");
         sstatus = getIntent().getStringExtra("alloted");
+        sdis = getIntent().getStringExtra("dis");
         name.setText(sname);
         subject.setText(ssubject);
+        token.setText(stoken);
+        discription.setText(sdis);  
 
 
 
@@ -81,9 +84,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
                 for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
 
-//                        name.setText(dataSnapshot1.getValue(Request.class).getName());
-                        token.setText(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()));
-                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
+
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
                             status.setText("Pending");
                         }
@@ -93,9 +94,8 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
                             status.setText("Complete");
                         }
-//                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
-                        discription.setText(dataSnapshot1.getValue(Request.class).getDis());
-                        mobile.setText(dataSnapshot1.getValue(Request.class).getMobile());
+
+
                     }
                 }
             }
