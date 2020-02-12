@@ -31,7 +31,7 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.pending_req_cardview, parent, false));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_alloted__req__info_, parent, false));
     }
 
     @Override
