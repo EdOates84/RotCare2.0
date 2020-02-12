@@ -71,7 +71,6 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
                             status.setText("Complete");
                         }
-                        discription.setText(dataSnapshot1.getValue(Request.class).getDis());
                     }
                 }
             }
