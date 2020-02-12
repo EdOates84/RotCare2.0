@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Alloted_Req_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid;
+    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
@@ -46,8 +46,11 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         salloted = getIntent().getStringExtra("status");
         smobile = getIntent().getStringExtra("mobile");
         sstatus = getIntent().getStringExtra("alloted");
+        sdis=getIntent().getStringExtra("dis");
         name.setText(sname);
         subject.setText(ssubject);
+        token.setText(stoken);
+        discription.setText(sdis);
 
 
 

@@ -66,6 +66,7 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
                 intent.putExtra("token",String.valueOf(Request_List.get(position).getToken()));
                 intent.putExtra("subject", Request_List.get(position).getSub());
                 intent.putExtra("Uiid", Request_List.get(position).getUid());
+                intent.putExtra("dis",Request_List.get(position).getDis());
 //                intent.putExtra("status", Request_List.get(position).getStatus());
 //                intent.putExtra("alloted_to", Request_List.get(position));
 //                intent.putExtra("mobile_no", Request_List.get(position).getStatus());
