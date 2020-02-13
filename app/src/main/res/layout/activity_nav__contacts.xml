@@ -7,7 +7,7 @@
     tools:context=".Nav_ContactsActivity">
 
     <ScrollView
-        android:id="@+id/volun_scrool"
+        android:id="@+id/contact_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="1dp"
