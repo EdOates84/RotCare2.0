@@ -7,6 +7,16 @@
     tools:context=".Nav_ProfileActivity"
     android:orientation="vertical">
 
+    <ScrollView
+        android:id="@+id/profile_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
     <include
         android:id="@+id/toolbar10"
         layout="@layout/toolbar" />
@@ -148,6 +158,9 @@
 
         </LinearLayout>
     </LinearLayout>
+
+
+    </ScrollView>
 
 
 </LinearLayout>
