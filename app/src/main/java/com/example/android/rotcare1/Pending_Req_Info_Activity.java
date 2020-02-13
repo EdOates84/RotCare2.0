@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -69,7 +70,10 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                selected_name = dataSnapshot.getValue(User.class).getName();
+               Log.e("","aqwes"+selected_name);
                selected_mobile = dataSnapshot.getValue(User.class).getPhone();
+                Log.e("","aqwes"+selected_mobile);
+
             }
 
             @Override
@@ -78,54 +82,53 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())){
-
-                        String key = dataSnapshot1.getKey();
-
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
-                            status.setText("Pending");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
-                            status.setText("Process");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
-                            status.setText("Complete");
-                        }
-
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
+//        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
+//        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+//                    if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())){
+//
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
+//                            status.setText("Pending");
+//                        }
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
+//                            status.setText("Process");
+//                        }
+//                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
+//                            status.setText("Complete");
+//                        }
+//
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
         Accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
-                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                mDatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                            if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())) {
+                            if (stoken.equals(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()))) {
 
                                 String key = dataSnapshot1.getKey();
-                                Log.e("",""+key);
+                                Log.e("","big"+key);
+                                mDatabase.child(key).child("Alloted_no").setValue(selected_mobile);
                                 mDatabase.child(key).child("Alloted_name").setValue(selected_name);
-                                mDatabase.child(key).child("Alloted_no.").setValue(selected_mobile);
+
 
                             }
                         }
+
                     }
 
                     @Override
@@ -133,7 +136,38 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
 
                     }
                 });
+//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
+
+//        Accept_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.e("","working");
+//                mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
+//                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        Log.e("","working");
+//
+//                        for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+//                            if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())) {
+//
+//                                String key = dataSnapshot1.getKey();
+//                                Log.e("",""+key);
+//                                mDatabase.child(key).child("Alloted_name").setValue(selected_name);
+//                                mDatabase.child(key).child("Alloted_no.").setValue(selected_mobile);
+//
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//            }
+//        });
     }
 }

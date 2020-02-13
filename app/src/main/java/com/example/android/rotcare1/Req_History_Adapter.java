@@ -37,6 +37,7 @@ public class Req_History_Adapter extends RecyclerView.Adapter<Req_History_Adapte
         holder.name.setText(Request_List.get(position).getName());
         holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
+        holder.alloted_to.setText(Request_List.get(position));
 //        holder.Status.setText(String.valueOf(Request_List.get(position).getStatus()));
         if (Request_List.get(position).getStatus() == 0){
             holder.Status.setText("Pending");
