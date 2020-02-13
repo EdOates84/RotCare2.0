@@ -7,7 +7,7 @@
     tools:context=".Alloted_Req_Info_Activity">
 
     <ScrollView
-        android:id="@+id/volun_scrool"
+        android:id="@+id/alloted_req_scrool"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="1dp"
