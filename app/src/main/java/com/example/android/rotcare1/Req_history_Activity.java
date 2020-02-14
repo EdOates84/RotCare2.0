@@ -51,6 +51,9 @@ public class Req_history_Activity extends AppCompatActivity {
                     if(dataSnapshot1.getValue(Request.class).getStatus()==2) {
                         list.add(u);
                     }
+                    else{
+                        Toast.makeText(Req_history_Activity.this, "No Requests Is Available", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 adapter = new Req_History_Adapter(Req_history_Activity.this, list);
                 recyclerView.setAdapter(adapter);
