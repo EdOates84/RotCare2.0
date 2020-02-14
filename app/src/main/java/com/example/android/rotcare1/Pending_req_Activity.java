@@ -48,8 +48,12 @@ public class Pending_req_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    list.add(u);
-                }
+                    if (dataSnapshot1.getValue(Request.class).getStatus()== 1){
+
+                        list.add(u);
+
+                    }
+
                 adapter = new Pending_Req_Adapter(Pending_req_Activity.this, list);
                 recyclerView.setAdapter(adapter);
             }

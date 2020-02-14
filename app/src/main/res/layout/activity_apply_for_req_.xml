@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Apply_for_req_Activity">
 
-    <ScrollView
-        android:id="@+id/apply_scrool"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="268dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
     <include
         android:id="@+id/toolbar4"
@@ -78,8 +68,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/discription_et"
         app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
