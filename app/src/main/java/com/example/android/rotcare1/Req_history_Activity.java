@@ -48,8 +48,9 @@ public class Req_history_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-//                    if()
-                    list.add(u);
+                    if(dataSnapshot1.getValue(Request.class).getStatus()==2) {
+                        list.add(u);
+                    }
                 }
                 adapter = new Req_History_Adapter(Req_history_Activity.this, list);
                 recyclerView.setAdapter(adapter);
