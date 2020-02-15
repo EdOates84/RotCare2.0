@@ -103,6 +103,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 String uniqueId = UUID.randomUUID().toString();
                 final String Uid = fAuth.getCurrentUser().getUid();
                 final String Mobile = mobile;
+                String Alloted_name = null;
+                String Alloted_no = null;
 
 
                 if (TextUtils.isEmpty(Subject)) {
@@ -125,6 +127,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                         Name,
                         Uid,
                         Mobile,
+                        Alloted_name,
+                        Alloted_no,
                         Status,
                         Count,
                         Tok
