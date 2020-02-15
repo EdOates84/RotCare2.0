@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,9 @@ public class Nav_ContactsActivity extends AppCompatActivity {
         e3 = findViewById(R.id.amail3);
         i3 = findViewById(R.id.pic2);
 
-
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setMessage("Please Wait...");
+        dialog.show();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Contact_info").child("1");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -91,6 +94,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
                 e3.setText(dataSnapshot.child("mail").getValue().toString());
                 Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i3);
 
+                dialog.dismiss();
             }
 
             @Override
