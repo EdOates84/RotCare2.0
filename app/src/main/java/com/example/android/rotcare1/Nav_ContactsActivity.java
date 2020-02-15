@@ -6,6 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
     TextView n1,p1,e1,n2,p2,e2,n3,p3,e3;
     ImageView i1,i2,i3;
     DatabaseReference mDatabase;
+    String E1,E2,E3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 n1.setText(dataSnapshot.child("Name").getValue().toString());
                 p1.setText(dataSnapshot.child("Post").getValue().toString());
+                E1 = dataSnapshot.child("mail").getValue().toString();
                 e1.setText(dataSnapshot.child("mail").getValue().toString());
                 Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i1);
 
@@ -74,6 +78,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 n2.setText(dataSnapshot.child("Name").getValue().toString());
                 p2.setText(dataSnapshot.child("Post").getValue().toString());
+                E2 = dataSnapshot.child("mail").getValue().toString();
                 e2.setText(dataSnapshot.child("mail").getValue().toString());
                 Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i2);
 
@@ -91,6 +96,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 n3.setText(dataSnapshot.child("Name").getValue().toString());
                 p3.setText(dataSnapshot.child("Post").getValue().toString());
+                E3 = dataSnapshot.child("mail").getValue().toString();
                 e3.setText(dataSnapshot.child("mail").getValue().toString());
                 Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i3);
 
@@ -103,6 +109,38 @@ public class Nav_ContactsActivity extends AppCompatActivity {
             }
         });
 
+        e1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto",E1, null));
+//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+//        intent.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+            }
+        });
+
+        e2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto",E2, null));
+//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+//        intent.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+            }
+        });
+
+        e3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto",E3, null));
+//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+//        intent.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+            }
+        });
 
 
     }
