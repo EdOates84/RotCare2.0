@@ -52,8 +52,7 @@ public class Pending_req_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    if (dataSnapshot1.getValue(Request.class).getStatus()== 1) {
-
+                    if (dataSnapshot1.getValue(Request.class).getStatus()==0) {
                         list.add(u);
 
                     }else{

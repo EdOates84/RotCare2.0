@@ -53,13 +53,14 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         stoken = getIntent().getStringExtra("token");
         ssubject = getIntent().getStringExtra("subject");
         salloted = getIntent().getStringExtra("status");
-        smobile = getIntent().getStringExtra("mobile");
+        smobile = getIntent().getStringExtra("mob");
         sstatus = getIntent().getStringExtra("alloted");
         sdis = getIntent().getStringExtra("dis");
         name.setText(sname);
         subject.setText(ssubject);
         token.setText(stoken);
         discription.setText(sdis);
+        mobile.setText(smobile);
 
 
 

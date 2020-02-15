@@ -68,7 +68,8 @@ public class Pending_Req_Adapter extends RecyclerView.Adapter<Pending_Req_Adapte
                 intent.putExtra("token",String.valueOf(Request_List.get(position).getToken()));
                 intent.putExtra("subject", Request_List.get(position).getSub());
                 intent.putExtra("Uiid", Request_List.get(position).getUid());
-//                intent.putExtra("status", Request_List.get(position).getStatus());
+                intent.putExtra("mob",Request_List.get(position).getMobile());
+                intent.putExtra("status",String.valueOf(Request_List.get(position).getStatus()));
 //                intent.putExtra("alloted_to", Request_List.get(position));
 //                intent.putExtra("mobile_no", Request_List.get(position).getStatus());
 
