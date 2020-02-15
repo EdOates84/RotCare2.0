@@ -49,7 +49,11 @@ public class Alloted_req_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    list.add(u);
+                    if (dataSnapshot1.getValue(Request.class).getStatus()==1){
+                        list.add(u);
+                    }else{
+                        Toast.makeText(Alloted_req_Activity.this, "Request Not Available", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 adapter = new Alloted_Req_Adapter (Alloted_req_Activity.this, list);
                 recyclerView.setAdapter(adapter);
