@@ -21,7 +21,7 @@
                 android:id="@+id/pic"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:layout_marginTop="292dp"
+                android:layout_marginTop="556dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar7">
@@ -192,16 +192,16 @@
                 app:layout_constraintStart_toEndOf="@+id/e"
                 app:layout_constraintTop_toBottomOf="@+id/apost"/>
 
-    <ImageView
-        android:id="@+id/pic2"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="544dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar7">
+            <ImageView
+                android:id="@+id/pic2"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="292dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar7">
 
-    </ImageView>
+            </ImageView>
 
     <TextView
                 android:id="@+id/n3"

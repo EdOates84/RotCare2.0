@@ -22,8 +22,8 @@ import com.squareup.picasso.Picasso;
 
 public class Nav_ContactsActivity extends AppCompatActivity {
 
-    TextView n1,p1,e1,n2,p2,e2;
-    ImageView i1,i2;
+    TextView n1,p1,e1,n2,p2,e2,n3,p3,e3;
+    ImageView i1,i2,i3;
     DatabaseReference mDatabase;
 
     @Override
@@ -42,6 +42,10 @@ public class Nav_ContactsActivity extends AppCompatActivity {
         e2 = findViewById(R.id.amail2);
         i1 = findViewById(R.id.achal_pic);
         i2 = findViewById(R.id.pic);
+        n3 = findViewById(R.id.aname3);
+        p3 = findViewById(R.id.apost3);
+        e3 = findViewById(R.id.amail3);
+        i3 = findViewById(R.id.pic2);
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Contact_info").child("1");
@@ -69,6 +73,23 @@ public class Nav_ContactsActivity extends AppCompatActivity {
                 p2.setText(dataSnapshot.child("Post").getValue().toString());
                 e2.setText(dataSnapshot.child("mail").getValue().toString());
                 Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i2);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Contact_info").child("3");
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                n3.setText(dataSnapshot.child("Name").getValue().toString());
+                p3.setText(dataSnapshot.child("Post").getValue().toString());
+                e3.setText(dataSnapshot.child("mail").getValue().toString());
+                Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i3);
 
             }
 
