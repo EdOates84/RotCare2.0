@@ -1,21 +1,39 @@
 package com.example.android.rotcare1;
 
 public class Request {
-    String sub,dis,name,uid,mobile;
+    String sub,dis,name,uid,mobile,alloted_name,alloted_no;
     int status,count,token;
 
     public Request() {
     }
 
-    public Request(String sub, String dis, String name, String uid,String mobile, int status, int count, int token) {
+    public Request(String sub, String dis, String name, String uid,String mobile,String alloted_name,String alloted_no, int status, int count, int token) {
         this.sub = sub;
         this.dis = dis;
         this.name = name;
         this.uid = uid;
         this.mobile = mobile;
+        this.alloted_name = alloted_name;
+        this.alloted_no = alloted_no;
         this.status = status;
         this.count = count;
         this.token = token;
+    }
+
+    public String getAlloted_name() {
+        return alloted_name;
+    }
+
+    public void setAlloted_name(String alloted_name) {
+        this.alloted_name = alloted_name;
+    }
+
+    public String getAlloted_no() {
+        return alloted_no;
+    }
+
+    public void setAlloted_no(String alloted_no) {
+        this.alloted_no = alloted_no;
     }
 
     public String getMobile() {

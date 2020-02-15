@@ -66,11 +66,5 @@ public class Req_history_Activity extends AppCompatActivity {
             }
         });
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//        super.onBackPressed();
-//    }
 }
 
