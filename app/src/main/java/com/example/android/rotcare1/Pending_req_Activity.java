@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -41,6 +42,9 @@ public class Pending_req_Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<Request>();
 
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setMessage("Please Wait...");
+        dialog.show();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -59,6 +63,7 @@ public class Pending_req_Activity extends AppCompatActivity {
 
                 adapter = new Pending_Req_Adapter(Pending_req_Activity.this, list);
                 recyclerView.setAdapter(adapter);
+                dialog.dismiss();
             }
 
             @Override
