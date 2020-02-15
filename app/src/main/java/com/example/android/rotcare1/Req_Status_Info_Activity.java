@@ -19,8 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Req_Status_Info_Activity extends AppCompatActivity {
 
-    TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis;
+    TextView name, token, subject, alloted, mobile, status, discription;
+    String sname, stoken, ssubject, salloted, smobile, sstatus, uiid, sdis;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
@@ -39,7 +39,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         discription = findViewById(R.id.discription);
         fAuth = FirebaseAuth.getInstance();
         final String Current_User = fAuth.getCurrentUser().getUid();
-        Log.e("asdfgh", "onCreate: "+Current_User );
+        Log.e("asdfgh", "onCreate: " + Current_User);
 
         uiid = getIntent().getStringExtra("Uiid");
         sname = getIntent().getStringExtra("name");
@@ -55,31 +55,22 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         discription.setText(sdis);
 
 
-
-
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())) {
 
-//                        name.setText(dataSnapshot1.getValue(Request.class).getName());
-//                        token.setText(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()));
-//                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0) {
                             status.setText("Pending");
                         }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1) {
                             status.setText("Process");
                         }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2) {
                             status.setText("Complete");
                         }
-//                        status.setText(dataSnapshot1.getValue(Request.class).getStatus());
-//                        discription.setText(dataSnapshot1.getValue(Request.class).getDis());
                     }
                 }
             }
@@ -89,5 +80,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
 
             }
         });
+
+        
     }
 }
