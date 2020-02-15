@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,12 +25,14 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
+    Button cancel_req;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_req__status__info_);
 
+        cancel_req = findViewById(R.id.cancel_btn);
         name = findViewById(R.id.name);
         token = findViewById(R.id.tok);
         subject = findViewById(R.id.sub);
@@ -60,7 +63,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())) {
+                    if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())) {
 
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 0) {
                             status.setText("Pending");
@@ -70,6 +73,9 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
                         }
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 2) {
                             status.setText("Complete");
+                        }
+                        if (dataSnapshot1.getValue(Request.class).getStatus()==3){
+                            status.setText("Cancel");
                         }
                     }
                 }
@@ -81,6 +87,12 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
             }
         });
 
-        
+        cancel_req.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 }

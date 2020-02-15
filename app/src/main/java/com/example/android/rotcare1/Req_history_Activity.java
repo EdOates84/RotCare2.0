@@ -48,7 +48,7 @@ public class Req_history_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    if(dataSnapshot1.getValue(Request.class).getStatus()==2) {
+                    if(dataSnapshot1.getValue(Request.class).getStatus()==2 || dataSnapshot1.getValue(Request.class).getStatus()==3 ) {
                         list.add(u);
                     }
                     else{
@@ -62,7 +62,6 @@ public class Req_history_Activity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(Req_history_Activity.this, "opss.. Something is wrong", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
