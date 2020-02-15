@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class Nav_ContactsActivity extends AppCompatActivity {
@@ -50,7 +51,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
                 n1.setText(dataSnapshot.child("Name").getValue().toString());
                 p1.setText(dataSnapshot.child("Post").getValue().toString());
                 e1.setText(dataSnapshot.child("mail").getValue().toString());
-                Picasso.get().load(Doctors_List.get(position).getDoc_profile()).into(holder.image);
+                Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i1);
 
             }
 
@@ -67,6 +68,8 @@ public class Nav_ContactsActivity extends AppCompatActivity {
                 n2.setText(dataSnapshot.child("Name").getValue().toString());
                 p2.setText(dataSnapshot.child("Post").getValue().toString());
                 e2.setText(dataSnapshot.child("mail").getValue().toString());
+                Picasso.get().load(dataSnapshot.child("image").getValue().toString()).into(i2);
+
             }
 
             @Override
