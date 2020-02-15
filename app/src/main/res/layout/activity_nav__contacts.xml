@@ -33,7 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:textStyle="bold"
         android:text="Email : "
+        android:textSize="16dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +48,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Post : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +64,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:textColor="@color/blueTint"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/e2"
         app:layout_constraintTop_toBottomOf="@+id/apost2"
         tools:text="mail" />
@@ -70,6 +77,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textSize="16dp"
+
         app:layout_constraintStart_toEndOf="@+id/n2"
         app:layout_constraintTop_toBottomOf="@+id/pic" />
 
@@ -79,6 +88,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Name : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +104,8 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
+        android:textSize="16dp"
+
         app:layout_constraintStart_toEndOf="@+id/p2"
         app:layout_constraintTop_toBottomOf="@+id/aname2" />
 
@@ -117,6 +131,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Name : "
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +144,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Post : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,6 +158,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Email : "
+        android:textStyle="bold"
+        android:textSize="16dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -152,6 +174,8 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textSize="16dp"
+
         app:layout_constraintStart_toEndOf="@+id/n"
         app:layout_constraintTop_toBottomOf="@+id/achal_pic" />
 
@@ -163,6 +187,8 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="TextView"
+        android:textSize="16dp"
+
         app:layout_constraintStart_toEndOf="@+id/p"
         app:layout_constraintTop_toBottomOf="@+id/aname" />
 
@@ -170,10 +196,14 @@
         android:id="@+id/amail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
+        android:textSize="16dp"
+
         android:textColor="@color/blueTint"
+        app:layout_constraintStart_toEndOf="@+id/e"
         app:layout_constraintTop_toBottomOf="@+id/apost"
-        tools:layout_editor_absoluteX="140dp"
         tools:text="mail" />
 
 
