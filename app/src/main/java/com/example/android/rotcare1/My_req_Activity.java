@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,6 +52,9 @@ public class My_req_Activity extends AppCompatActivity {
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Please Wait...");
         dialog.show();
+
+        Log.e("","asxz"+current);
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -58,6 +62,7 @@ public class My_req_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
                     current = dataSnapshot.getValue(Request.class).getUid();
+                    Log.e("","asxz"+current);
                 }
             }
 
@@ -67,12 +72,13 @@ public class My_req_Activity extends AppCompatActivity {
             }
         });
 
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    if (Current_user.equals(current)) {
+                    if (Current_user == (current)) {
                         list.add(u);
                     }
                 }
