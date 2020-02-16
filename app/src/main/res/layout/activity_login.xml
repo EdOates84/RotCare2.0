@@ -6,22 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:scaleType="fitXY"
+        android:src="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/background"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+
 
             <TextView
                 android:id="@+id/textView7"
@@ -50,7 +54,7 @@
                 android:id="@+id/imageView4"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +66,7 @@
                 android:id="@+id/loginmail"
                 android:layout_width="298dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
@@ -87,7 +91,7 @@
                 android:layout_width="298dp"
                 android:layout_marginTop="16dp"
                 android:text="Sign IN"
-                app:backgroundTint="@color/yellowTint"
+                app:backgroundTint="@color/blueTint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,13 +114,14 @@
                 android:id="@+id/create_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="New User?Sign Up"
+                android:layout_marginTop="50dp"
+                android:text="New User? Sign Up"
+                android:textColor="@color/blueTint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sign_btn"
-                app:layout_constraintVertical_bias="0.328" />
+                app:layout_constraintVertical_bias="0.0" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
