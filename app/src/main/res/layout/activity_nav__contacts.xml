@@ -6,27 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".Nav_ContactsActivity">
 
+
+    <include
+        android:id="@+id/toolbar7"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="532dp"
+        android:alpha="0.6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar7"
+        app:layout_constraintVertical_bias="0.225">
+
+    </ImageView>
+
+
     <ScrollView
         android:id="@+id/contact_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar7"
+        tools:layout_editor_absoluteX="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/pic"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:layout_marginTop="556dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar7">
-
-            </ImageView>
 
             <TextView
                 android:id="@+id/e2"
@@ -101,21 +114,18 @@
                 app:layout_constraintStart_toEndOf="@+id/p2"
                 app:layout_constraintTop_toBottomOf="@+id/aname2" />
 
-            <include
-                android:id="@+id/toolbar7"
-                layout="@layout/toolbar"
-                tools:layout_editor_absoluteY="84dp" />
 
             <ImageView
-            android:id="@+id/achal_pic"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar7">
+                android:id="@+id/achal_pic"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar7"
+                app:layout_constraintVertical_bias="0.039">
 
-        </ImageView>
+            </ImageView>
 
             <TextView
                 android:id="@+id/n"
@@ -190,20 +200,21 @@
                 android:textColor="@color/blueTint"
                 android:textSize="16dp"
                 app:layout_constraintStart_toEndOf="@+id/e"
-                app:layout_constraintTop_toBottomOf="@+id/apost"/>
+                app:layout_constraintTop_toBottomOf="@+id/apost" />
 
             <ImageView
                 android:id="@+id/pic2"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:layout_marginTop="292dp"
+                android:layout_marginTop="300dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar7">
 
             </ImageView>
 
-    <TextView
+            <TextView
                 android:id="@+id/n3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -276,7 +287,17 @@
                 app:layout_constraintStart_toEndOf="@+id/e"
                 app:layout_constraintTop_toBottomOf="@+id/apost3" />
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/background"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
