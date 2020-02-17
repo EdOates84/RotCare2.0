@@ -55,8 +55,8 @@ public class Pending_req_Activity extends AppCompatActivity {
                     if (dataSnapshot1.getValue(Request.class).getStatus()==0) {
                         list.add(u);
 
-                    }else{
-                        Toast.makeText(Pending_req_Activity.this, "No Request Is Available", Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(Pending_req_Activity.this, "No Request Is Available", Toast.LENGTH_SHORT).show();
                     }
                     }
 
