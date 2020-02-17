@@ -59,17 +59,12 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
                 Intent intent = new Intent(context, Alloted_Req_Info_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-//                Name = Request_List.get(position).getName();
-
 //                intent.putExtra("image", Request_List.get(position));
                 intent.putExtra("name", Request_List.get(position).getName());
                 intent.putExtra("token",String.valueOf(Request_List.get(position).getToken()));
                 intent.putExtra("subject", Request_List.get(position).getSub());
                 intent.putExtra("Uiid", Request_List.get(position).getUid());
                 intent.putExtra("dis",Request_List.get(position).getDis());
-//                intent.putExtra("status", Request_List.get(position).getStatus());
-//                intent.putExtra("alloted_to", Request_List.get(position));
-//                intent.putExtra("mobile_no", Request_List.get(position).getStatus());
 
                 context.startActivity(intent);
             }
