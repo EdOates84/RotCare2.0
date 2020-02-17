@@ -81,7 +81,7 @@ public class My_req_Activity extends AppCompatActivity {
                     Request u = dataSnapshot1.getValue(Request.class);
                     Log.e("aqwes","True"+dataSnapshot1.getValue(Request.class).getMobile());
 
-                    if (dataSnapshot1.getValue(Request.class).getMobile() == mobile) {
+                    if (dataSnapshot1.getValue(Request.class).getMobile().equals(mobile)) {
                         Log.e("aqwes","True");
 
                         list.add(u);
