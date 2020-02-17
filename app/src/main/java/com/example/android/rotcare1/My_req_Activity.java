@@ -23,12 +23,12 @@ import java.util.ArrayList;
 
 public class My_req_Activity extends AppCompatActivity {
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase,fDatabase;
     private RecyclerView recyclerView;
     private ArrayList<Request> list;
     private Req_Status_Adapter adapter;
     FirebaseAuth fAuth;
-    String Current_user,current;
+    String Current_user,mobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class My_req_Activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fAuth = FirebaseAuth.getInstance();
-        Current_user = fAuth.getCurrentUser().getEmail();
+        Current_user = fAuth.getCurrentUser().getUid();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
@@ -53,17 +53,17 @@ public class My_req_Activity extends AppCompatActivity {
         dialog.setMessage("Please Wait...");
         dialog.show();
 
-        Log.e("","asxz"+current);
-
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
-
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        fDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_user);
+        fDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                    current = dataSnapshot.getValue(Request.class).getMail();
-                    Log.e("","asxz"+current);
-                }
+                String data = dataSnapshot.getKey();
+                mobile = dataSnapshot.getValue(User.class).getPhone();
+                Log.e("aqwes","calll"+mobile);
+
+
+
+
             }
 
             @Override
@@ -72,15 +72,24 @@ public class My_req_Activity extends AppCompatActivity {
             }
         });
 
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    if (Current_user == (current)) {
+                    Log.e("aqwes","True"+dataSnapshot1.getValue(Request.class).getMobile());
+
+                    if (dataSnapshot1.getValue(Request.class).getMobile() == mobile) {
+                        Log.e("aqwes","True");
+
                         list.add(u);
                     }
+//                    if (Current_user == current) {
+                        Log.e("aqwes","Calll");
+//                        list.add(u);
+//                    }
                 }
                 adapter = new Req_Status_Adapter(My_req_Activity.this, list);
                 recyclerView.setAdapter(adapter);

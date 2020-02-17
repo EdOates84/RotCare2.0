@@ -125,7 +125,7 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
                                 Log.e("","big"+key);
                                 mDatabase.child(key).child("Alloted_no").setValue(selected_mobile);
                                 mDatabase.child(key).child("Alloted_name").setValue(selected_name);
-                                mDatabase.child(key).child("status").setValue(2);
+                                mDatabase.child(key).child("status").setValue(1);
 
 
                             }
