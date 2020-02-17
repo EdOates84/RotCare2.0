@@ -56,7 +56,7 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
      holder.relative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, Pending_Req_Info_Activity.class);
+                Intent intent = new Intent(context, Alloted_Req_Info_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 //                Name = Request_List.get(position).getName();
