@@ -40,7 +40,7 @@ public class My_req_Activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fAuth = FirebaseAuth.getInstance();
-        Current_user = fAuth.getCurrentUser().getUid();
+        Current_user = fAuth.getCurrentUser().getEmail();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
@@ -61,7 +61,7 @@ public class My_req_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                    current = dataSnapshot.getValue(Request.class).getUid();
+                    current = dataSnapshot.getValue(Request.class).get;
                     Log.e("","asxz"+current);
                 }
             }
@@ -78,9 +78,9 @@ public class My_req_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    if (Current_user == (current)) {
+//                    if (Current_user == (current)) {
                         list.add(u);
-                    }
+//                    }
                 }
                 adapter = new Req_Status_Adapter(My_req_Activity.this, list);
                 recyclerView.setAdapter(adapter);
