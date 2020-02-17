@@ -34,7 +34,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseUser Current_User;
     int count,tok;
-    String name,mobile;
+    String name,mobile,email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 count = dataSnapshot.getValue(User.class).getCount();
                 name = dataSnapshot.getValue(User.class).getName();
                 mobile = dataSnapshot.getValue(User.class).getPhone();
+                email = dataSnapshot.getValue(User.class).getEmail();
+
 
             }
 
@@ -105,6 +107,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 final String Mobile = mobile;
                 String Alloted_name = null;
                 String Alloted_no = null;
+                String Mail = email;
 
 
                 if (TextUtils.isEmpty(Subject)) {
@@ -129,6 +132,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                         Mobile,
                         Alloted_name,
                         Alloted_no,
+                        Mail,
                         Status,
                         Count,
                         Tok

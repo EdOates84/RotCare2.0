@@ -1,13 +1,13 @@
 package com.example.android.rotcare1;
 
 public class Request {
-    String sub,dis,name,uid,mobile,alloted_name,alloted_no;
+    String sub,dis,name,uid,mobile,alloted_name,alloted_no,mail;
     int status,count,token;
 
     public Request() {
     }
 
-    public Request(String sub, String dis, String name, String uid,String mobile,String alloted_name,String alloted_no, int status, int count, int token) {
+    public Request(String sub, String dis, String name, String uid,String mobile,String alloted_name,String alloted_no,String mail, int status, int count, int token) {
         this.sub = sub;
         this.dis = dis;
         this.name = name;
@@ -15,9 +15,18 @@ public class Request {
         this.mobile = mobile;
         this.alloted_name = alloted_name;
         this.alloted_no = alloted_no;
+        this.mail = mail;
         this.status = status;
         this.count = count;
         this.token = token;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getAlloted_name() {
