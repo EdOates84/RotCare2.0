@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:backgroundTint="@color/colorPrimary"
-        android:text="Alloted Requests"
+        android:text="Accepted Requests"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
