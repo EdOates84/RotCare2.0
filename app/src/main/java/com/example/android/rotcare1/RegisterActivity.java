@@ -26,7 +26,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 
@@ -54,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         emergency = findViewById(R.id.remergency);
         date = findViewById(R.id.rdate);
         occupation = findViewById(R.id.Occupation_spinner);
-        gender = findViewById(R.id.gender_spinner);
+        gender = findViewById(R.id.suject_et);
         user_type = findViewById(R.id.user_typespinner);
         registerbtn = findViewById(R.id.rregister);
         fAuth = FirebaseAuth.getInstance();
