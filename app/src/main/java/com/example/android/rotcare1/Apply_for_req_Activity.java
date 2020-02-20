@@ -118,9 +118,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 String Mail = email;
 
 
-                if (TextUtils.isEmpty(Subject)) {
-                    Toast.makeText(getApplicationContext(), "Enter Subject!", Toast.LENGTH_SHORT).show();
-                    subject.requestFocus();
+                if (Subject.equals("Select Subject")) {
+                    Toast.makeText(getApplicationContext(), "Select Subject!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

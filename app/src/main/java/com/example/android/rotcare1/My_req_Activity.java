@@ -23,12 +23,12 @@ import java.util.ArrayList;
 
 public class My_req_Activity extends AppCompatActivity {
 
-    private DatabaseReference mDatabase,fDatabase;
+    private DatabaseReference mDatabase;
     private RecyclerView recyclerView;
     private ArrayList<Request> list;
     private Req_Status_Adapter adapter;
     FirebaseAuth fAuth;
-    String Current_user,mobile,UserUID;
+    String Current_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,39 +53,15 @@ public class My_req_Activity extends AppCompatActivity {
         dialog.setMessage("Please Wait...");
         dialog.show();
 
-//        fDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_user);
-//        fDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                String data = dataSnapshot.getKey();
-//                mobile = dataSnapshot.getValue(User.class).getPhone();
-//                Log.e("aqwes","calll"+mobile);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    Log.e("aqwes","True"+dataSnapshot1.getValue(Request.class).getMobile());
-                    if (Current_user.equals(dataSnapshot1.getValue(Request.class).getUid())){
-//                    if (dataSnapshot1.getValue(Request.class).getMobile().equals(mobile)) {
-                        Log.e("aqwes","True");
+                    if (Current_user.equals(dataSnapshot1.getValue(Request.class).getUid())) {
                         list.add(u);
                     }
-//                    if (Current_user == current) {
-                        Log.e("aqwes","Calll");
-//                        list.add(u);
-//                    }
                 }
                 adapter = new Req_Status_Adapter(My_req_Activity.this, list);
                 recyclerView.setAdapter(adapter);
@@ -99,9 +75,10 @@ public class My_req_Activity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         super.onBackPressed();

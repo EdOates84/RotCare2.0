@@ -33,10 +33,10 @@ import java.net.PasswordAuthentication;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText mail,password;
+    EditText mail, password;
     Spinner user_type;
     Button loginbtn;
-    TextView Create_user,forgot_pass;
+    TextView Create_user, forgot_pass;
     String Usertype;
     private FirebaseAuth fAuth;
     FirebaseUser Current_User;
@@ -61,12 +61,11 @@ public class LoginActivity extends AppCompatActivity {
         final ProgressDialog dialog = new ProgressDialog(this);
 
 
-
         fAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
             }
         };
@@ -102,24 +101,24 @@ public class LoginActivity extends AppCompatActivity {
 //                if (Usertype.equals("User Type")) {
 //                    Toast.makeText(LoginActivity.this, "Select User", Toast.LENGTH_SHORT).show();
 //                } else {
-                    dialog.setMessage("Signing you in...");
-                    dialog.show();
+                dialog.setMessage("Signing you in...");
+                dialog.show();
 
-                    fAuth.signInWithEmailAndPassword(Mail, Password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+                fAuth.signInWithEmailAndPassword(Mail, Password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                            if (task.isSuccessful()) {
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                                dialog.dismiss();
-                            }
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
                         }
+                    }
 
-                    });
-                }
+                });
+            }
 //            }
         });
         Create_user.setOnClickListener(new View.OnClickListener() {
@@ -131,19 +130,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart () {
+    protected void onStart() {
         super.onStart();
         fAuth.addAuthStateListener(fAuthListener);
     }
 
-        @Override
-        public void onBackPressed() {
-            Intent setIntent = new Intent(Intent.ACTION_MAIN);
-            setIntent.addCategory(Intent.CATEGORY_HOME);
-            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(setIntent);
-            finish();
-        }
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
+        finish();
+    }
 
 
 }
