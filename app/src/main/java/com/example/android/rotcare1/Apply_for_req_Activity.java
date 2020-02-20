@@ -57,7 +57,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
 
 
 
-        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.User_type, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.Subject_type, android.R.layout.simple_spinner_item);
         usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sub.setAdapter(usertype_adapter);
 

@@ -28,7 +28,7 @@ public class My_req_Activity extends AppCompatActivity {
     private ArrayList<Request> list;
     private Req_Status_Adapter adapter;
     FirebaseAuth fAuth;
-    String Current_user,mobile;
+    String Current_user,mobile,UserUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,24 +53,21 @@ public class My_req_Activity extends AppCompatActivity {
         dialog.setMessage("Please Wait...");
         dialog.show();
 
-        fDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_user);
-        fDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String data = dataSnapshot.getKey();
-                mobile = dataSnapshot.getValue(User.class).getPhone();
-                Log.e("aqwes","calll"+mobile);
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        fDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_user);
+//        fDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                String data = dataSnapshot.getKey();
+//                mobile = dataSnapshot.getValue(User.class).getPhone();
+//                Log.e("aqwes","calll"+mobile);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
@@ -80,7 +77,8 @@ public class My_req_Activity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
                     Log.e("aqwes","True"+dataSnapshot1.getValue(Request.class).getMobile());
-                    if (dataSnapshot1.getValue(Request.class).getMobile().equals(mobile)) {
+                    if (Current_user.equals(dataSnapshot1.getValue(Request.class).getUid())){
+//                    if (dataSnapshot1.getValue(Request.class).getMobile().equals(mobile)) {
                         Log.e("aqwes","True");
                         list.add(u);
                     }
@@ -103,7 +101,9 @@ public class My_req_Activity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         super.onBackPressed();
     }
 }
