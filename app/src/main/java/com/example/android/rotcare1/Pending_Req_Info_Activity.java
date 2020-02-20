@@ -127,6 +127,9 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
                                 mDatabase.child(key).child("Alloted_name").setValue(selected_name);
                                 mDatabase.child(key).child("status").setValue(1);
 
+                                Intent intent = new Intent(getApplicationContext(),Alloted_req_Activity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
 
                             }
                         }
