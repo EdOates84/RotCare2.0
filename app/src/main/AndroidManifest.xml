@@ -17,7 +17,7 @@
         <activity android:name=".Pending_Req_Info_Activity" />
         <activity
             android:name=".Alloted_req_Activity"
-            android:label="Alloted Request"
+            android:label="Accepted Request"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Pending_req_Activity"
