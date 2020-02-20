@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +31,7 @@ import java.util.UUID;
 public class Apply_for_req_Activity extends AppCompatActivity {
 
     EditText subject,discription;
+    Spinner sub;
     Button submitbtn;
     DatabaseReference mDatabase,tDatabase,fDatabase,pDatabase,qDatabase;
     FirebaseAuth fAuth;
@@ -42,7 +45,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_apply_for_req_);
 
         final ProgressDialog dialog = new ProgressDialog(this);
-        subject = findViewById(R.id.suject_et);
+//        subject = findViewById(R.id.suject_et);
+        sub = findViewById(R.id.subject_et);
         discription = findViewById(R.id.discription_et);
         submitbtn = findViewById(R.id.submit_btn);
         fAuth = FirebaseAuth.getInstance();
@@ -50,6 +54,13 @@ public class Apply_for_req_Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar4);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+        ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.User_type, android.R.layout.simple_spinner_item);
+        usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sub.setAdapter(usertype_adapter);
+
 
         tDatabase = FirebaseDatabase.getInstance().getReference().child("Last_Token").child("1");
         tDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,10 +104,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.setMessage("Please wait...");
-                dialog.show();
-
-                final String Subject = subject.getText().toString().trim();
+                final String Subject = sub.getSelectedItem().toString();
                 final String Dis = discription.getText().toString().trim();
                 final String Name = name;
                 int Tok = tok+1;
@@ -121,8 +129,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                     discription.requestFocus();
                     return;
                 }
-//                dialog.setMessage("Please wait...");
-//                dialog.show();
+                dialog.setMessage("Please wait...");
+                dialog.show();
 
                 Request request = new Request(
                         Subject,

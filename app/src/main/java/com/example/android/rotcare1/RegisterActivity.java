@@ -139,11 +139,11 @@ public class RegisterActivity extends AppCompatActivity {
                     phone.requestFocus();
                     return;
                 }
-                if (TextUtils.isEmpty(Emergency)) {
-                    Toast.makeText(getApplicationContext(), "Enter emergency contact no.!", Toast.LENGTH_SHORT).show();
-                    emergency.requestFocus();
-                    return;
-                }
+//                if (TextUtils.isEmpty(Emergency)) {
+//                    Toast.makeText(getApplicationContext(), "Enter emergency contact no.!", Toast.LENGTH_SHORT).show();
+//                    emergency.requestFocus();
+//                    return;
+//                }
                 if (TextUtils.isEmpty(USER)) {
                     Toast.makeText(getApplicationContext(), "Select User type!", Toast.LENGTH_SHORT).show();
                     user_type.requestFocus();

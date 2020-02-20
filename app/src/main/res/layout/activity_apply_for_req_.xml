@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Spinner
-            android:id="@+id/suject_et"
+            android:id="@+id/subject_et"
             android:layout_width="298dp"
             android:layout_height="60dp"
             android:spinnerMode="dropdown" />
