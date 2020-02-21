@@ -36,8 +36,7 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         status = findViewById(R.id.status);
         discription = findViewById(R.id.discription);
         fAuth = FirebaseAuth.getInstance();
-        final String Current_User = fAuth.getCurrentUser().getUid();
-        Log.e("asdfgh", "onCreate: "+Current_User );
+
 
         uiid = getIntent().getStringExtra("Uiid");
         sname = getIntent().getStringExtra("name");
@@ -51,6 +50,8 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         subject.setText(ssubject);
         token.setText(stoken);
         discription.setText(sdis);
+        status.setText("Process");
+
 
 
 
@@ -62,18 +63,9 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (uiid.equals(dataSnapshot1.getValue(Request.class).getUid())){
+                    if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())){
 
-                        subject.setText(dataSnapshot1.getValue(Request.class).getSub());
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 0){
-                            status.setText("Pending");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1){
-                            status.setText("Process");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2){
-                            status.setText("Complete");
-                        }
+
                     }
                 }
             }
