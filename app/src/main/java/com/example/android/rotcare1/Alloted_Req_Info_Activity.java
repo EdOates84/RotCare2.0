@@ -104,7 +104,31 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         withdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Alloted_Req_Info_Activity.this, "Request is withdraw", Toast.LENGTH_SHORT).show();
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
+                mDatabase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                            if (stoken.equals(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()))) {
+                                String key = dataSnapshot1.getKey();
+                                Log.e("","big"+key);
+                                mDatabase.child(key).child("status").setValue(0);
+
+                                Intent intent = new Intent(getApplicationContext(),Pending_req_Activity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
             }
         });
     }

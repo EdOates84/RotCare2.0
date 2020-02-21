@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +25,8 @@ public class V_req_History extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Request> list;
     private V_req_history_adapter adapter;
+    FirebaseAuth fAuth;
+    String Current_user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,8 @@ public class V_req_History extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar13);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        fAuth = FirebaseAuth.getInstance();
+        Current_user = fAuth.getCurrentUser().getUid();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
@@ -48,9 +53,11 @@ public class V_req_History extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    Request u = dataSnapshot1.getValue(Request.class);
-                    if(dataSnapshot1.getValue(Request.class).getStatus()==2 || dataSnapshot1.getValue(Request.class).getStatus()==3 ) {
-                        list.add(u);
+                    if(Current_user.equals(dataSnapshot1.getValue(Request.class).getUid())) {
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 2 || dataSnapshot1.getValue(Request.class).getStatus() == 3) {
+                            Request u = dataSnapshot1.getValue(Request.class);
+                            list.add(u);
+                        }
                     }
 //                    else{
 //                        Toast.makeText(Req_history_Activity.this, "No Requests Is Available", Toast.LENGTH_SHORT).show();

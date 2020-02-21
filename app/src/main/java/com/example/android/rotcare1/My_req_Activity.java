@@ -71,7 +71,9 @@ public class My_req_Activity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
                     if (Current_user.equals(dataSnapshot1.getValue(Request.class).getUid())) {
-                        list.add(u);
+                        if (dataSnapshot1.getValue(Request.class).getStatus() == 1) {
+                            list.add(u);
+                        }
                     }
                 }
                 adapter = new Req_Status_Adapter(My_req_Activity.this, list);
