@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class DemoFragment extends Fragment {
 
     private TextView textView;
-    Button pending_req,alloted_req;
+    Button pending_req,alloted_req,request_history;
 
 
     public DemoFragment() {
@@ -30,6 +30,7 @@ public class DemoFragment extends Fragment {
 
         pending_req = view.findViewById(R.id.v_pending_req);
         alloted_req = view.findViewById(R.id.v_alloted_req);
+        request_history = view.findViewById(R.id.v_req_history);
 
         pending_req.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,13 @@ public class DemoFragment extends Fragment {
                 startActivity(new Intent(getContext(),Alloted_req_Activity.class));
             }
         });
+        request_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),V_req_History.class));
+            }
+        });
+
         return view;
     }
 

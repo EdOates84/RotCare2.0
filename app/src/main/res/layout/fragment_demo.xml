@@ -43,6 +43,21 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <Button
+        android:id="@+id/v_req_history"
+        style="@style/MainButtonStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Requests History"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_alloted_req"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
         android:id="@+id/v_pending_req"
         style="@style/MainButtonStyle"
         android:layout_width="200dp"
