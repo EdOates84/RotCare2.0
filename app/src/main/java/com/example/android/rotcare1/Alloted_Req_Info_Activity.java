@@ -15,6 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Alloted_Req_Info_Activity extends AppCompatActivity {
 
     TextView name,token,subject,alloted,mobile,status,discription;
@@ -51,6 +54,11 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         token.setText(stoken);
         discription.setText(sdis);
         status.setText("Process");
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
+        String dateTime = simpleDateFormat.format(calendar.getTime());
+        Log.e("a","damp"+dateTime);
 
 
 

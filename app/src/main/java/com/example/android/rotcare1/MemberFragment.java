@@ -7,11 +7,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class MemberFragment extends Fragment {
 
@@ -27,6 +31,11 @@ public class MemberFragment extends Fragment {
         apy_for_req = (Button) view.findViewById(R.id.applyreq);
         req_history = view.findViewById(R.id.req_history);
         req_status =  view.findViewById(R.id.my_req);
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
+        String dateTime = simpleDateFormat.format(calendar.getTime());
+        Log.e("a","damp"+dateTime);
 
         apy_for_req.setOnClickListener(new View.OnClickListener() {
             @Override
