@@ -30,14 +30,14 @@ import java.util.UUID;
 
 public class Apply_for_req_Activity extends AppCompatActivity {
 
-    EditText subject,discription;
+    EditText subject, discription;
     Spinner sub;
     Button submitbtn;
-    DatabaseReference mDatabase,tDatabase,fDatabase,pDatabase,qDatabase;
+    DatabaseReference mDatabase, tDatabase, fDatabase, pDatabase, qDatabase;
     FirebaseAuth fAuth;
     FirebaseUser Current_User;
-    int count,tok,sta;
-    String name,mobile,email;
+    int count, tok, sta;
+    String name, mobile, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,6 @@ public class Apply_for_req_Activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
         ArrayAdapter<CharSequence> usertype_adapter = ArrayAdapter.createFromResource(this, R.array.Subject_type, android.R.layout.simple_spinner_item);
         usertype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sub.setAdapter(usertype_adapter);
@@ -70,7 +69,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 tok = (dataSnapshot.child("1").getValue(Last_Token.class).getLast_tok());
 //                sta = (dataSnapshot.child("2").getValue(Last_Token.class).getNormal_status());
 
-                Log.e("pappu",""+tok);
+                Log.e("pappu", "" + tok);
             }
 
             @Override
@@ -78,7 +77,6 @@ public class Apply_for_req_Activity extends AppCompatActivity {
 
             }
         });
-
 
 
         fDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
@@ -109,14 +107,14 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 final String Subject = sub.getSelectedItem().toString();
                 final String Dis = discription.getText().toString().trim();
                 final String Name = name;
-                int Tok = tok+1;
-                int Count = count+1;
+                int Tok = tok + 1;
+                int Count = count + 1;
                 int Status = 0;
                 String uniqueId = UUID.randomUUID().toString();
                 final String Uid = fAuth.getCurrentUser().getUid();
                 final String Mobile = mobile;
-                String Alloted_name = null;
-                String Alloted_no = null;
+                String Acceptname = null;
+                String Acceptno = null;
                 String Mail = email;
 
 
@@ -139,8 +137,8 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                         Name,
                         Uid,
                         Mobile,
-                        Alloted_name,
-                        Alloted_no,
+                        Acceptname,
+                        Acceptno,
                         Mail,
                         Status,
                         Count,
@@ -152,26 +150,26 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
-                        }else {
+                        } else {
                             Toast.makeText(Apply_for_req_Activity.this, "Something is wrong", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                 });
 
-                Intent intent = new Intent(getApplicationContext(),Pending_Req_Info_Activity.class);
+                Intent intent = new Intent(getApplicationContext(), Pending_Req_Info_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                intent.putExtra("unique",uniqueId);
+                intent.putExtra("unique", uniqueId);
 
                 tDatabase = FirebaseDatabase.getInstance().getReference().child("Last_Token").child("1");
 
                 tDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        tDatabase.child("last_tok").setValue(tok+1);
+                        tDatabase.child("last_tok").setValue(tok + 1);
                     }
 
                     @Override
@@ -181,13 +179,12 @@ public class Apply_for_req_Activity extends AppCompatActivity {
                 });
 
 
-
                 qDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
                 qDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String data = dataSnapshot.getKey();
-                        qDatabase.child("count").setValue(count+1);
+                        qDatabase.child("count").setValue(count + 1);
                     }
 
                     @Override
@@ -198,11 +195,12 @@ public class Apply_for_req_Activity extends AppCompatActivity {
 
 
                 Toast.makeText(Apply_for_req_Activity.this, "Request Submited", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),My_req_Activity.class));
+                intent = new Intent(getApplicationContext(), My_req_Activity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 dialog.dismiss();
             }
         });
-
 
 
     }

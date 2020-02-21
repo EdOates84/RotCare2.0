@@ -20,8 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Req_Status_Info_Activity extends AppCompatActivity {
 
-    TextView name, token, subject, alloted, mobile, status, discription;
-    String sname, stoken, ssubject, salloted, smobile, sstatus, uiid, sdis;
+    TextView name, token, subject, alloted,allotmob, mobile, status, discription;
+    String sname, stoken, ssubject, salloted, sallomobile,smobile, sstatus, uiid, sdis;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
@@ -37,6 +37,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         token = findViewById(R.id.tok);
         subject = findViewById(R.id.sub);
         alloted = findViewById(R.id.alloted_name);
+        allotmob = findViewById(R.id.alloted_mob_no);
         mobile = findViewById(R.id.mobile_no);
         status = findViewById(R.id.status);
         discription = findViewById(R.id.discription);
@@ -48,14 +49,18 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         sname = getIntent().getStringExtra("name");
         stoken = getIntent().getStringExtra("tok");
         ssubject = getIntent().getStringExtra("subject");
-        salloted = getIntent().getStringExtra("status");
+        salloted = getIntent().getStringExtra("acceptname");
+        sallomobile = getIntent().getStringExtra("acceptno");
         smobile = getIntent().getStringExtra("mobile");
-        sstatus = getIntent().getStringExtra("alloted");
+        sstatus = getIntent().getStringExtra("sta");
         sdis = getIntent().getStringExtra("dis");
         name.setText(sname);
         subject.setText(ssubject);
         token.setText(stoken);
         discription.setText(sdis);
+        alloted.setText(salloted);
+        allotmob.setText(sallomobile);
+//        status.setText(sstatus);
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
@@ -63,7 +68,7 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())) {
+                    if (stoken.equals(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()))) {
 
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 0) {
                             status.setText("Pending");
@@ -73,9 +78,6 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
                         }
                         if (dataSnapshot1.getValue(Request.class).getStatus() == 2) {
                             status.setText("Complete");
-                        }
-                        if (dataSnapshot1.getValue(Request.class).getStatus()==3){
-                            status.setText("Cancel");
                         }
                     }
                 }
@@ -90,9 +92,32 @@ public class Req_Status_Info_Activity extends AppCompatActivity {
         cancel_req.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                        mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
+                        mDatabase.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                                    if (stoken.equals(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()))) {
+                                        String key = dataSnapshot1.getKey();
+                                        Log.e("","big"+key);
+                                        mDatabase.child(key).child("status").setValue(3);
 
+                                        Intent intent = new Intent(getApplicationContext(),Alloted_req_Activity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+
+                                    }
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                });
             }
-        });
 
-    }
 }

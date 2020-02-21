@@ -1,9 +1,9 @@
 package com.example.android.rotcare1;
 
 public class Last_Token {
-    int last_tok,normal_status;
+    int last_tok, normal_status;
 
-    public  Last_Token() {
+    public Last_Token() {
     }
 
     public Last_Token(int last_tok, int normal_status) {

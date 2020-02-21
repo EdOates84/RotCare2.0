@@ -54,13 +54,14 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
         ssubject = getIntent().getStringExtra("subject");
         salloted = getIntent().getStringExtra("status");
         smobile = getIntent().getStringExtra("mob");
-        sstatus = getIntent().getStringExtra("alloted");
+//        sstatus = getIntent().getStringExtra("alloted");
         sdis = getIntent().getStringExtra("dis");
         name.setText(sname);
         subject.setText(ssubject);
         token.setText(stoken);
         discription.setText(sdis);
         mobile.setText(smobile);
+        status.setText("Pending");
 
 
 
@@ -123,8 +124,8 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
 
                                 String key = dataSnapshot1.getKey();
                                 Log.e("","big"+key);
-                                mDatabase.child(key).child("Alloted_no").setValue(selected_mobile);
-                                mDatabase.child(key).child("Alloted_name").setValue(selected_name);
+                                mDatabase.child(key).child("acceptno").setValue(selected_mobile);
+                                mDatabase.child(key).child("acceptname").setValue(selected_name);
                                 mDatabase.child(key).child("status").setValue(1);
 
                                 Intent intent = new Intent(getApplicationContext(),Alloted_req_Activity.class);
@@ -141,7 +142,6 @@ public class Pending_Req_Info_Activity extends AppCompatActivity {
 
                     }
                 });
-//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
 

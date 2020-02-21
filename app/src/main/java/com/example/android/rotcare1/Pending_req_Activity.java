@@ -52,13 +52,13 @@ public class Pending_req_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Request u = dataSnapshot1.getValue(Request.class);
-                    if (dataSnapshot1.getValue(Request.class).getStatus()==0) {
+                    if (dataSnapshot1.getValue(Request.class).getStatus() == 0) {
                         list.add(u);
 
 //                    }else{
 //                        Toast.makeText(Pending_req_Activity.this, "No Request Is Available", Toast.LENGTH_SHORT).show();
                     }
-                    }
+                }
 
                 adapter = new Pending_Req_Adapter(Pending_req_Activity.this, list);
                 recyclerView.setAdapter(adapter);

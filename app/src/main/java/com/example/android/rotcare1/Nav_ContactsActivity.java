@@ -25,10 +25,10 @@ import com.squareup.picasso.Picasso;
 
 public class Nav_ContactsActivity extends AppCompatActivity {
 
-    TextView n1,p1,e1,n2,p2,e2,n3,p3,e3;
-    ImageView i1,i2,i3;
+    TextView n1, p1, e1, n2, p2, e2, n3, p3, e3;
+    ImageView i1, i2, i3;
     DatabaseReference mDatabase;
-    String E1,E2,E3;
+    String E1, E2, E3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,9 +113,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto",E1, null));
-//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-//        intent.putExtra(Intent.EXTRA_TEXT, message);
+                        "mailto", E1, null));
                 startActivity(Intent.createChooser(intent, "Choose an Email client :"));
             }
         });
@@ -124,9 +122,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto",E2, null));
-//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-//        intent.putExtra(Intent.EXTRA_TEXT, message);
+                        "mailto", E2, null));
                 startActivity(Intent.createChooser(intent, "Choose an Email client :"));
             }
         });
@@ -135,9 +131,7 @@ public class Nav_ContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto",E3, null));
-//        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-//        intent.putExtra(Intent.EXTRA_TEXT, message);
+                        "mailto", E3, null));
                 startActivity(Intent.createChooser(intent, "Choose an Email client :"));
             }
         });

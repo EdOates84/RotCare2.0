@@ -41,6 +41,7 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
         holder.name.setText(Request_List.get(position).getName());
         holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
+        holder.mobile_no.setText(Request_List.get(position).getMobile());
 //        holder.Status.setText(String.valueOf(Request_List.get(position).getStatus()));
 //        if (Request_List.get(position).getStatus() == 0){
 //            holder.Status.setText("Pending");
@@ -53,7 +54,7 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
 //        }
 //        Picasso.get().load(Request_List.get(position).getDoc_profile()).into(holder.image);
 
-     holder.relative.setOnClickListener(new View.OnClickListener() {
+        holder.relative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Alloted_Req_Info_Activity.class);
@@ -61,10 +62,12 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
 
 //                intent.putExtra("image", Request_List.get(position));
                 intent.putExtra("name", Request_List.get(position).getName());
-                intent.putExtra("token",String.valueOf(Request_List.get(position).getToken()));
+                intent.putExtra("token", String.valueOf(Request_List.get(position).getToken()));
                 intent.putExtra("subject", Request_List.get(position).getSub());
                 intent.putExtra("Uiid", Request_List.get(position).getUid());
-                intent.putExtra("dis",Request_List.get(position).getDis());
+                intent.putExtra("dis", Request_List.get(position).getDis());
+                intent.putExtra("allot_name", Request_List.get(position).getAcceptname());
+                intent.putExtra("allot_no", Request_List.get(position).getAcceptno());
 
                 context.startActivity(intent);
             }
@@ -81,7 +84,7 @@ public class Alloted_Req_Adapter extends RecyclerView.Adapter<Alloted_Req_Adapte
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView name,token,subject,mobile_no;
+        TextView name, token, subject, mobile_no;
         RelativeLayout relative;
 
         public MyViewHolder(View itemView) {

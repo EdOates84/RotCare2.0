@@ -1,24 +1,40 @@
 package com.example.android.rotcare1;
 
 public class Request {
-    String sub,dis,name,uid,mobile,alloted_name,alloted_no,mail;
+    String sub,dis,name,uid,mobile,acceptname,acceptno,mail;
     int status,count,token;
 
     public Request() {
     }
 
-    public Request(String sub, String dis, String name, String uid,String mobile,String alloted_name,String alloted_no,String mail, int status, int count, int token) {
+    public Request(String sub, String dis, String name, String uid,String mobile,String acceptname,String acceptno,String mail, int status, int count, int token) {
         this.sub = sub;
         this.dis = dis;
         this.name = name;
         this.uid = uid;
         this.mobile = mobile;
-        this.alloted_name = alloted_name;
-        this.alloted_no = alloted_no;
+        this.acceptname = acceptname;
+        this.acceptno = acceptno;
         this.mail = mail;
         this.status = status;
         this.count = count;
         this.token = token;
+    }
+
+    public String getAcceptname() {
+        return acceptname;
+    }
+
+    public void setAcceptname(String acceptname) {
+        this.acceptname = acceptname;
+    }
+
+    public String getAcceptno() {
+        return acceptno;
+    }
+
+    public void setAcceptno(String acceptno) {
+        this.acceptno = acceptno;
     }
 
     public String getMail() {
@@ -27,22 +43,6 @@ public class Request {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public String getAlloted_name() {
-        return alloted_name;
-    }
-
-    public void setAlloted_name(String alloted_name) {
-        this.alloted_name = alloted_name;
-    }
-
-    public String getAlloted_no() {
-        return alloted_no;
-    }
-
-    public void setAlloted_no(String alloted_no) {
-        this.alloted_no = alloted_no;
     }
 
     public String getMobile() {

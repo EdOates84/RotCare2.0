@@ -51,14 +51,14 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
         holder.name.setText(Request_List.get(position).getName());
         holder.token.setText(String.valueOf(Request_List.get(position).getToken()));
         holder.subject.setText(Request_List.get(position).getSub());
-//        holder.Status.setText(String.valueOf(Request_List.get(position).getStatus()));
         if (Request_List.get(position).getStatus() == 0) {
             holder.Status.setText("Pending");
         }
         if (Request_List.get(position).getStatus() == 1) {
 
 //            holder.alloted_to.setText();
-            holder.alloted_no.setText(Request_List.get(position).getAlloted_no());
+            holder.alloted_to.setText(Request_List.get(position).getAcceptname());
+            holder.alloted_no.setText(Request_List.get(position).getAcceptno());
             holder.Status.setText("Process");
         }
         if (Request_List.get(position).getStatus() == 2) {
@@ -82,6 +82,9 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
                 intent.putExtra("subject", Request_List.get(position).getSub());
                 intent.putExtra("Uiid", Request_List.get(position).getUid());
                 intent.putExtra("dis",Request_List.get(position).getDis());
+                intent.putExtra("sta",Request_List.get(position).getStatus());
+                intent.putExtra("acceptname",Request_List.get(position).getAcceptname());
+                intent.putExtra("acceptno",Request_List.get(position).getAcceptno());
                 context.startActivity(intent);
             }
         });

@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() == null) {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
             }
         };
@@ -90,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
 
 //            case R.id.nav_home:
 ////                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_HomeActivity()).commit();
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_profile:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ProfileActivity()).commit();
 
-                startActivity(new Intent(MainActivity.this,Nav_ProfileActivity.class));
+                startActivity(new Intent(MainActivity.this, Nav_ProfileActivity.class));
                 break;
 
 //            case R.id.nav_reward:
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_contacts:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Nav_ContactsActivity()).commit();
 
-                startActivity(new Intent(MainActivity.this,Nav_ContactsActivity.class));
+                startActivity(new Intent(MainActivity.this, Nav_ContactsActivity.class));
                 break;
 
 
@@ -143,7 +145,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        name.setText(CurrentUser.getDisplayName());
             email.setText(CurrentUser.getEmail());
         }
-
 
 
     }

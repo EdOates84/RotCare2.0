@@ -24,12 +24,12 @@ import java.util.Calendar;
 
 public class Alloted_Req_Info_Activity extends AppCompatActivity {
 
-    TextView name,token,subject,alloted,mobile,status,discription;
-    String sname,stoken,ssubject,salloted,smobile,sstatus,uiid,sdis;
+    TextView name, token, subject, alloted, alloted_mobile, mobile, status, discription;
+    String sname, stoken, ssubject, salloted, sallot_mob, smobile, sstatus, uiid, sdis;
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
-    Button comp,withdraw;
+    Button comp, withdraw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         token = findViewById(R.id.tok);
         subject = findViewById(R.id.sub);
         alloted = findViewById(R.id.alloted_name);
+        alloted_mobile = findViewById(R.id.alloted_mob_no);
         mobile = findViewById(R.id.mobile_no);
         status = findViewById(R.id.status);
         discription = findViewById(R.id.discription);
@@ -52,29 +53,34 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         sname = getIntent().getStringExtra("name");
         stoken = getIntent().getStringExtra("token");
         ssubject = getIntent().getStringExtra("subject");
-        salloted = getIntent().getStringExtra("status");
+        salloted = getIntent().getStringExtra("allot_name");
+        sallot_mob = getIntent().getStringExtra("allot_no");
         smobile = getIntent().getStringExtra("mobile");
         sstatus = getIntent().getStringExtra("alloted");
-        sdis=getIntent().getStringExtra("dis");
+        sdis = getIntent().getStringExtra("dis");
         name.setText(sname);
         subject.setText(ssubject);
         token.setText(stoken);
         discription.setText(sdis);
+//        alloted.setText(salloted);
+//        alloted_mobile.setTe xt(sallot_mob);
         status.setText("Process");
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
         String dateTime = simpleDateFormat.format(calendar.getTime());
-        Log.e("a","damp"+dateTime);
+        Log.e("a", "damp" + dateTime);
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())){
-
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    if (stoken.equals(String.valueOf(dataSnapshot1.getValue(Request.class).getToken()))) {
+                        alloted.setText(dataSnapshot1.getValue(Request.class).getAcceptname());
+                        Log.e("a", "bcd" + dataSnapshot1.getValue(Request.class).getAcceptname());
+                        alloted_mobile.setText(dataSnapshot1.getValue(Request.class).getAcceptno());
                     }
                 }
             }
@@ -89,7 +95,9 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(),V_req_History.class));
+                Intent intent = new Intent(getApplicationContext(), V_req_History.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
 

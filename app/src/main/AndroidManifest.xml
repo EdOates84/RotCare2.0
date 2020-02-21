@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".V_req_History"></activity>
         <activity android:name=".Req_History_Info_Activity" />
         <activity android:name=".Req_Status_Info_Activity" />
         <activity android:name=".Alloted_Req_Info_Activity" />
@@ -27,6 +26,10 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Req_history_Activity"
+            android:label="Request History"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".V_req_History"
             android:label="Request History"
             android:parentActivityName=".MainActivity" />
         <activity

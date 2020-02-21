@@ -22,8 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Nav_ProfileActivity extends AppCompatActivity {
 
-    ImageView iprofile,imail,iphone,ioccu,iadd,iimage;
-    TextView pname,pmail,pphone,poccu,padd;
+    ImageView iprofile, imail, iphone, ioccu, iadd, iimage;
+    TextView pname, pmail, pphone, poccu, padd;
     FirebaseAuth fAuth;
     DatabaseReference mDatabase;
     String Current_user;
