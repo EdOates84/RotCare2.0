@@ -1,5 +1,6 @@
 package com.example.android.rotcare1;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
@@ -34,10 +37,15 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.req_status_cardview, parent, false));
+
     }
+
+
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+
+
 
 
         holder.name.setText(Request_List.get(position).getName());
@@ -48,6 +56,9 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
             holder.Status.setText("Pending");
         }
         if (Request_List.get(position).getStatus() == 1) {
+
+//            holder.alloted_to.setText();
+            holder.alloted_no.setText(Request_List.get(position).getAlloted_no());
             holder.Status.setText("Process");
         }
         if (Request_List.get(position).getStatus() == 2) {
@@ -103,7 +114,7 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView name, token, subject, alloted_to, mobile_no, Status;
+        TextView name, token, subject, alloted_to, mobile_no, Status , alloted_no;
         RelativeLayout relative;
 
         public MyViewHolder(View itemView) {
@@ -114,7 +125,7 @@ public class Req_Status_Adapter extends RecyclerView.Adapter<Req_Status_Adapter.
             token = itemView.findViewById(R.id.tok);
             subject = itemView.findViewById(R.id.sub);
             alloted_to = itemView.findViewById(R.id.alloted_name);
-            mobile_no = itemView.findViewById(R.id.alloted_mob_no);
+            alloted_no = itemView.findViewById(R.id.alloted_mob_no);
             Status = itemView.findViewById(R.id.status);
             relative = itemView.findViewById(R.id.relative);
         }

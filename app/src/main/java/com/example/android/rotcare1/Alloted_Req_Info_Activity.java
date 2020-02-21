@@ -3,10 +3,14 @@ package com.example.android.rotcare1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +29,7 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
     ImageView imageView;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
+    Button comp,withdraw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         mobile = findViewById(R.id.mobile_no);
         status = findViewById(R.id.status);
         discription = findViewById(R.id.discription);
+        comp = findViewById(R.id.Complete_btn);
+        withdraw = findViewById(R.id.withdraw_btn);
         fAuth = FirebaseAuth.getInstance();
 
 
@@ -61,18 +68,12 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
         Log.e("a","damp"+dateTime);
 
 
-
-
-
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Requests");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for ( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     if (stoken.equals(dataSnapshot1.getValue(Request.class).getToken())){
-
 
                     }
                 }
@@ -81,6 +82,21 @@ public class Alloted_Req_Info_Activity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        comp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),V_req_History.class));
+            }
+        });
+
+        withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Alloted_Req_Info_Activity.this, "Request is withdraw", Toast.LENGTH_SHORT).show();
             }
         });
     }
