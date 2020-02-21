@@ -36,7 +36,7 @@ public class Apply_for_req_Activity extends AppCompatActivity {
     DatabaseReference mDatabase,tDatabase,fDatabase,pDatabase,qDatabase;
     FirebaseAuth fAuth;
     FirebaseUser Current_User;
-    int count,tok;
+    int count,tok,sta;
     String name,mobile,email;
 
     @Override
@@ -62,12 +62,14 @@ public class Apply_for_req_Activity extends AppCompatActivity {
         sub.setAdapter(usertype_adapter);
 
 
-        tDatabase = FirebaseDatabase.getInstance().getReference().child("Last_Token").child("1");
+        tDatabase = FirebaseDatabase.getInstance().getReference().child("Last_Token");
         tDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getKey();
-                tok = (dataSnapshot.getValue(Last_Token.class).getLast_tok());
+                tok = (dataSnapshot.child("1").getValue(Last_Token.class).getLast_tok());
+//                sta = (dataSnapshot.child("2").getValue(Last_Token.class).getNormal_status());
+
                 Log.e("pappu",""+tok);
             }
 
