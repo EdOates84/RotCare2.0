@@ -1,10 +1,17 @@
 package com.example.android.rotcare1;
 
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -13,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,10 +34,11 @@ import java.util.Calendar;
 
 public class MemberFragment extends Fragment {
 
-    Button apy_for_req,req_status,req_history;
+    Button apy_for_req,req_status,req_history,police,emer,fire;
     DatabaseReference mDatabase;
     FirebaseAuth fAuth;
     String Current_User;
+    private int Call_Premission_Code = 1;
 
     public MemberFragment() {
     }
@@ -84,6 +93,99 @@ public class MemberFragment extends Fragment {
             }
         });
 
+        emer = (Button) view.findViewById(R.id.ambulance_btn);
+        police = (Button) view.findViewById(R.id.police_btn);
+        fire = (Button) view.findViewById(R.id.fire_btn);
+        emer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+                    requestcallpermission();
+                }
+                String number = "108";
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + number));
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
+
+        police.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+                    requestcallpermission();
+                }
+                String number = "100";
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + number));
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
+        fire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+                    requestcallpermission();
+                }
+                String number = "101";
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + number));
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
+
         return view;
+    }
+
+
+
+
+    private void requestcallpermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CALL_PHONE)) {
+            new AlertDialog.Builder(getActivity()).setTitle("Premission needed").setMessage("This permission is needed because of call").setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, Call_Premission_Code);
+
+
+                }
+            })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).create().show();
+
+        } else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, Call_Premission_Code);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == Call_Premission_Code) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(getActivity(), "Permission GRANTED", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Permission DENIED", Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 }
